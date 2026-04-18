@@ -158,7 +158,7 @@
             xCircleLarge: `<svg class="w-7 h-7 md:w-8 md:h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`,
             refresh: `<svg class="w-5 h-5 md:w-6 md:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`,
             arrowLeft: `<svg class="w-5 h-5 md:w-6 md:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>`,
-            arrowRight: `<svg class="w-5 h-5 md:w-6 md:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`,
+            arrowRight: `<svg class="w-5 h-5 md:w-6 md:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 19"></polyline></svg>`,
             medal: `<svg class="w-24 h-24 md:w-32 md:h-32 mx-auto text-amber-400 mb-6 drop-shadow-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>`,
             tray: `<svg class="w-8 h-8 md:w-12 md:h-12 mb-2 opacity-80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>`,
             flipIcon: `<svg class="w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>`
@@ -547,7 +547,7 @@
                     pairs: [
                         { id: "m1", right: "«أن خير الأمور العلم»", left: "حجة منطقية (عقلية)." },
                         { id: "m2", right: "«ما الحب إلا للحبيب الأول»", left: "شاهد قولي يعزز حب الوطن." },
-                        { id: "m3", right: "«الكرم في العرب»", left: "حجة مقارنة." },
+                        { id: "m3", right: "«الكرم في العرب»", left: "حجة المقارنة." },
                         { id: "m4", right: "«تخليص الإبريز في تلخيص باريز»", left: "سجع وجناس يطرب الأذن." },
                         { id: "m5", right: "«القديم والحديث»", left: "طباق يبرز المعنى ويؤكده." },
                         { id: "m6", right: "«إن الليل والنهار يعملان فيك»", left: "استعارة للحث على العمل." },
@@ -788,7 +788,10 @@
                 APP_DATA.sections.forEach(section => {
                     const isActive = this.state.activeTab === section.id;
                     const secProgress = this.state.progress[section.id];
-                    const isDone = secProgress.total > 0 && secProgress.answered === secProgress.total;
+                    // التأكد من أن القسم يحتوي على أسئلة قابلة للتقييم لكي نعرض علامة الصح
+                    const isScorableSection = !['intro', 'story', 'golden_envelope', 'style_lab', 'radar', 'contrast_cards', 'toolbelt'].includes(section.type);
+                    const isDone = isScorableSection && secProgress.total > 0 && secProgress.answered === secProgress.total;
+                    
                     let activeClass = isActive ? `bg-${section.theme}-600 text-white border-${section.theme}-600 shadow-md` : "bg-white text-slate-600 border-slate-200";
                     html += `
                         <button id="tab-${section.id}" type="button" onclick="App.handleTabChange('${section.id}')" class="shrink-0 whitespace-nowrap px-6 py-2 rounded-full font-semibold text-lg md:text-xl border-2 transition-all flex items-center justify-center gap-2 active:scale-95 ${activeClass}">
@@ -797,12 +800,19 @@
                     `;
                 });
                 wrapper.innerHTML = html;
+                
+                const activeSectionDef = APP_DATA.sections.find(s => s.id === this.state.activeTab);
+                const isScorableActive = !['intro', 'story', 'golden_envelope', 'style_lab', 'radar', 'contrast_cards', 'toolbelt'].includes(activeSectionDef.type);
                 const currentProgress = this.state.progress[this.state.activeTab];
-                const progressPercent = currentProgress && currentProgress.total > 0 ? (currentProgress.answered / currentProgress.total) * 100 : 0;
+                const progressPercent = (currentProgress && currentProgress.total > 0 && isScorableActive) ? (currentProgress.answered / currentProgress.total) * 100 : 0;
+                
                 const progressBar = document.getElementById('progress-bar');
-                const theme = APP_DATA.sections.find(s => s.id === this.state.activeTab).theme;
-                progressBar.className = `h-full transition-all duration-500 ease-out bg-${theme}-500`;
-                progressBar.style.width = `${progressPercent}%`;
+                if (progressBar) {
+                    progressBar.className = `h-full transition-all duration-500 ease-out bg-${activeSectionDef.theme}-500`;
+                    progressBar.style.width = `${progressPercent}%`;
+                    // إخفاء حاوية شريط التقدم بالكامل إذا كان القسم لا يحتوي على درجات
+                    progressBar.parentElement.style.display = isScorableActive ? 'block' : 'none';
+                }
             },
             renderSection(sectionData) {
                 switch (sectionData.type) {
@@ -904,7 +914,7 @@
 
             handleRadarClick(sectionId, idx) {
                 const state = this.state.sectionData[sectionId];
-                if (state.activeBranch === idx) return; // لمنع إعادة الرسم لو نقر على نفس الزر
+                if (state.activeBranch === idx) return; 
                 
                 state.activeBranch = idx;
                 const sectionData = APP_DATA.sections.find(s => s.id === sectionId);
@@ -990,8 +1000,8 @@
                     </div>
                     
                     <div class="flex justify-between items-center mt-8 pt-6 border-t border-slate-100">
-                        <button ${state.currentIdx === 0 ? 'disabled class="opacity-50 pointer-events-none"' : `onclick="App.handleStyleLabNav('${sectionId}', -1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 active:scale-95 transition-all text-lg">${ICONS.arrowRight} السابق</button>
-                        <button ${state.currentIdx === total - 1 ? 'disabled class="opacity-50 pointer-events-none"' : `onclick="App.handleStyleLabNav('${sectionId}', 1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-${sectionData.theme}-100 text-${sectionData.theme}-700 font-bold hover:bg-${sectionData.theme}-200 active:scale-95 transition-all text-lg">التالي ${ICONS.arrowLeft}</button>
+                        <button ${state.currentIdx === 0 ? 'disabled' : `onclick="App.handleStyleLabNav('${sectionId}', -1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 active:scale-95 transition-all text-lg ${state.currentIdx === 0 ? 'opacity-50 pointer-events-none' : ''}">${ICONS.arrowRight} السابق</button>
+                        <button ${state.currentIdx === total - 1 ? 'disabled' : `onclick="App.handleStyleLabNav('${sectionId}', 1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-${sectionData.theme}-100 text-${sectionData.theme}-700 font-bold hover:bg-${sectionData.theme}-200 active:scale-95 transition-all text-lg ${state.currentIdx === total - 1 ? 'opacity-50 pointer-events-none' : ''}">التالي ${ICONS.arrowLeft}</button>
                     </div>
                 </div>`;
                 return html;
@@ -1090,8 +1100,8 @@
                     </div>
 
                     <div class="flex justify-between items-center mt-8 pt-6 border-t border-slate-100">
-                        <button ${state.currentIdx === 0 ? 'disabled class="opacity-50 pointer-events-none"' : `onclick="App.handleToolbeltNav('${sectionId}', -1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 active:scale-95 transition-all text-lg">${ICONS.arrowRight} السابق</button>
-                        <button ${state.currentIdx === total - 1 ? 'disabled class="opacity-50 pointer-events-none"' : `onclick="App.handleToolbeltNav('${sectionId}', 1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-${sectionData.theme}-100 text-${sectionData.theme}-700 font-bold hover:bg-${sectionData.theme}-200 active:scale-95 transition-all text-lg">التالي ${ICONS.arrowLeft}</button>
+                        <button ${state.currentIdx === 0 ? 'disabled' : `onclick="App.handleToolbeltNav('${sectionId}', -1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 active:scale-95 transition-all text-lg ${state.currentIdx === 0 ? 'opacity-50 pointer-events-none' : ''}">${ICONS.arrowRight} السابق</button>
+                        <button ${state.currentIdx === total - 1 ? 'disabled' : `onclick="App.handleToolbeltNav('${sectionId}', 1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-${sectionData.theme}-100 text-${sectionData.theme}-700 font-bold hover:bg-${sectionData.theme}-200 active:scale-95 transition-all text-lg ${state.currentIdx === total - 1 ? 'opacity-50 pointer-events-none' : ''}">التالي ${ICONS.arrowLeft}</button>
                     </div>
                 </div>`;
                 return html;
@@ -1153,7 +1163,7 @@
                 return html;
             },
 
-            // --- دوال الأقسام الأساسية القديمة ---
+            // --- دوال الأقسام الأساسية المحدثة للعمل بالتحديث الجزئي (Partial Updates) ---
 
             renderIntro(sectionData) {
                 let headerHTML = '';
@@ -1179,6 +1189,7 @@
                 gridHTML += '</div>';
                 return `<div class="max-w-4xl mx-auto pb-6">${headerHTML}${gridHTML}<div class="flex justify-center mt-12 pt-4 fade-in"><button onclick="App.handleNextSection()" class="bg-${sectionData.theme}-600 md:hover:bg-${sectionData.theme}-700 text-white font-semibold text-xl md:text-2xl py-4 px-12 rounded-full shadow-lg flex items-center gap-3 active:scale-95 transition-all duration-300">القسم التالي ${ICONS.arrowLeft}</button></div></div>`;
             },
+            
             renderStandardSection(sectionData) {
                 const sectionId = sectionData.id;
                 const progress = this.state.progress[sectionId];
@@ -1196,6 +1207,7 @@
                 html += `</div>`; 
                 return html;
             },
+            
             renderQuestionCard(qState, idx, sectionId, theme, type) {
                 const { originalQuestion: q, options, answered, selectedOption, showHint, hintAnimate, answerAnimate } = qState;
                 const isSelectedCorrect = selectedOption && selectedOption.isCorrect;
@@ -1245,9 +1257,18 @@
                     </div>
                 </div>`;
             },
+            
+            // --- فرز البطاقات (Sort) عبر التحديث الجزئي ---
             renderSort(sectionData) {
+                let html = `<div id="${sectionData.id}-sort-container" class="fade-in">`;
+                html += this.renderSortInner(sectionData);
+                html += `</div>`;
+                return html;
+            },
+
+            renderSortInner(sectionData) {
                 const sectionId = sectionData.id; const theme = sectionData.theme; const state = this.state.sectionData[sectionId]; const { questions, currentIndex, status, animatingOut } = state; const isComplete = currentIndex >= questions.length;
-                let html = '<div class="flex flex-col items-center w-full gap-6 fade-in">';
+                let html = '<div class="flex flex-col items-center w-full gap-6">';
                 if (sectionData.description) { html += `<div class="text-center w-full"><p class="text-lg md:text-xl text-${theme}-800 font-semibold bg-${theme}-50 bg-opacity-60 p-4 md:p-5 rounded-2xl shadow-sm">${sectionData.description}</p></div>`; }
                 let boxesHTML = ''; if (!isComplete) {
                     const colors = ['emerald', 'violet', 'cyan', 'teal', 'indigo', 'sky', 'rose'];
@@ -1264,7 +1285,16 @@
 
                 html += `<div class="relative w-full min-h-[12rem] bg-slate-50 rounded-3xl border-2 border-dashed border-slate-300 flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-500">${!isComplete ? `<div class="w-full max-w-2xl bg-white p-5 md:p-8 rounded-2xl shadow-lg border-2 border-slate-200 transition-all transform leading-snug flex flex-col justify-start z-10 ${animatingOut ? 'fly-out' : 'fade-in'} ${status === 'incorrect' ? 'shake' : ''}"><div class="flex items-center justify-between mb-4"><span class="text-${theme}-600 font-bold text-lg md:text-xl">البطاقة ${toArabicNum(currentIndex + 1)}</span><button onclick="App.toggleHint('${sectionId}', ${currentIndex})" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-lg md:text-xl font-bold transition-all active:scale-95 text-amber-500 md:hover:bg-amber-50">💡 تلميح</button></div><h3 class="text-3xl md:text-4xl font-bold leading-snug text-slate-800 text-center">«${currentQState.originalQuestion.text}»</h3><div id="hint-area-${sectionId}-${currentIndex}" class="${showHint ? `block w-full ${hintFadeClass}` : 'hidden'} mt-4"><div class="bg-amber-50 text-amber-900 p-4 rounded-xl text-xl font-medium border border-amber-200 flex gap-2 items-start text-right"><span class="text-amber-500 font-semibold mt-1 shrink-0">💡</span><span class="leading-relaxed">${currentQState.originalQuestion.hint}</span></div></div><div class="${status === 'incorrect' ? 'block w-full smooth-expand' : 'hidden'} mt-5"><div class="p-4 bg-rose-50 border border-rose-200 rounded-xl text-center text-rose-700 text-lg md:text-xl font-bold shadow-sm">⚠️ إجابة خاطئة! ${currentQState.originalQuestion.explanation}</div></div></div>` : `<div class="text-3xl md:text-4xl font-bold text-emerald-500 flex flex-col items-center gap-4 fade-in py-6"><span class="text-6xl">🎉</span><span>اكتملت فرز البطاقات!</span></div>`}</div>${!isComplete ? `<div class="flex flex-row w-full max-w-2xl mx-auto gap-2 md:gap-4 mt-2 relative z-0 flex-wrap justify-center">${boxesHTML}</div>` : ''}</div>`;
                 if (isComplete) { const progress = this.state.progress[sectionId]; html += `<div class="mt-12 p-8 md:p-10 bg-white border-2 border-${theme}-200 rounded-2xl shadow-sm text-center smooth-expand max-w-2xl mx-auto w-full"><h3 class="text-2xl md:text-3xl font-semibold text-slate-700 mb-6">نتيجتك في قسم (${sectionData.title})</h3><div class="text-4xl md:text-5xl font-bold text-${theme}-600 flex items-center justify-center gap-3"><span>${toArabicNum(progress.score)}</span><span class="text-2xl md:text-3xl text-slate-400 font-medium mt-1">من</span><span>${toArabicNum(progress.total)}</span></div></div>`; }
-                html += `<div id="section-footer-area-${sectionId}" class="w-full">` + this.renderSectionFooterControls(sectionId, isComplete) + `</div>`; return html;
+                html += `<div id="section-footer-area-${sectionId}" class="w-full">` + this.renderSectionFooterControls(sectionId, isComplete) + `</div>`; 
+                return html;
+            },
+
+            updateSortPartial(sectionId) {
+                const sectionDef = APP_DATA.sections.find(s => s.id === sectionId);
+                const container = document.getElementById(`${sectionId}-sort-container`);
+                if (container) {
+                    container.innerHTML = this.renderSortInner(sectionDef);
+                }
             },
 
             renderSpotting(sectionData) {
@@ -1609,9 +1639,18 @@
                     </div>
                 </div>`;
             },
+            
+            // --- البطاقات القلابة (Flashcards) عبر التحديث الجزئي ---
             renderFlashcards(sectionData) {
+                let html = `<div id="${sectionData.id}-flashcards-container" class="fade-in">`;
+                html += this.renderFlashcardsInner(sectionData);
+                html += `</div>`;
+                return html;
+            },
+
+            renderFlashcardsInner(sectionData) {
                 const sectionId = sectionData.id; const theme = sectionData.theme; const state = this.state.sectionData[sectionId]; const { cards, currentIndex, isFlipped, animatingOut } = state; const isComplete = currentIndex >= cards.length;
-                let html = `<div class="flex flex-col items-center w-full gap-6 fade-in">`;
+                let html = `<div class="flex flex-col items-center w-full gap-6">`;
                 if (sectionData.description) { html += `<div class="text-center w-full"><p class="text-lg md:text-xl text-${theme}-800 font-semibold bg-${theme}-50 bg-opacity-60 p-4 md:p-5 rounded-2xl shadow-sm">${sectionData.description}</p></div>`; }
                 html += `<div class="relative w-full min-h-[20rem] flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-500 perspective">`;
                 if (!isComplete) {
@@ -1620,18 +1659,32 @@
                 } else { html += `<div class="text-3xl md:text-4xl font-bold text-emerald-500 flex flex-col items-center gap-4 fade-in py-10 bg-white border-2 border-emerald-200 w-full max-w-lg rounded-3xl shadow-lg"><span class="text-6xl">🏆</span><span>انتهت البطاقات!</span></div>`; }
                 html += `</div></div>`;
                 if (isComplete) { const progress = this.state.progress[sectionId]; html += `<div class="mt-8 p-8 md:p-10 bg-white border-2 border-${theme}-200 rounded-2xl shadow-sm text-center smooth-expand max-w-2xl mx-auto w-full"><h3 class="text-2xl md:text-3xl font-semibold text-slate-700 mb-6">نتيجتك في قسم (${sectionData.title})</h3><div class="text-4xl md:text-5xl font-bold text-${theme}-600 flex items-center justify-center gap-3"><span>${toArabicNum(progress.score)}</span><span class="text-2xl md:text-3xl text-slate-400 font-medium mt-1">من</span><span>${toArabicNum(progress.total)}</span></div></div>`; }
-                html += `<div id="section-footer-area-${sectionId}" class="w-full">` + this.renderSectionFooterControls(sectionId, isComplete) + `</div>`; return html;
+                html += `<div id="section-footer-area-${sectionId}" class="w-full">` + this.renderSectionFooterControls(sectionId, isComplete) + `</div>`; 
+                return html;
+            },
+
+            updateFlashcardsPartial(sectionId) {
+                const sectionDef = APP_DATA.sections.find(s => s.id === sectionId);
+                const container = document.getElementById(`${sectionId}-flashcards-container`);
+                if (container) {
+                    container.innerHTML = this.renderFlashcardsInner(sectionDef);
+                }
             },
             
+            // --- التصنيف (Classify) عبر التحديث الجزئي ---
             renderClassify(sectionData) {
+                let html = `<div id="${sectionData.id}-classify-container" class="fade-in">`;
+                html += this.renderClassifyInner(sectionData);
+                html += `</div>`;
+                return html;
+            },
+
+            renderClassifyInner(sectionData) {
                 const sectionId = sectionData.id;
                 const theme = sectionData.theme;
                 const state = this.state.sectionData[sectionId];
                 const { questions, currentIndex, status, placedItems, animatingOut } = state;
                 const isComplete = currentIndex >= questions.length;
-
-                const isInitialState = currentIndex === 0 && status === 'idle' && !animatingOut;
-                const sectionFadeClass = isInitialState ? 'fade-in' : '';
 
                 let html = '';
                 const currentQState = isComplete ? null : questions[currentIndex];
@@ -1695,7 +1748,7 @@
                     </div>`;
                 });
 
-                html += `<div class="flex flex-col items-center w-full gap-6 ${sectionFadeClass}">`;
+                html += `<div class="flex flex-col items-center w-full gap-6">`;
                 if (sectionData.description) {
                     html += `<div class="text-center w-full"><p class="text-lg md:text-xl text-${theme}-800 font-semibold bg-${theme}-50 bg-opacity-60 p-4 md:p-5 rounded-2xl shadow-sm">${sectionData.description}</p></div>`;
                 }
@@ -1734,6 +1787,14 @@
                 }
                 html += `<div id="section-footer-area-${sectionId}" class="w-full">` + this.renderSectionFooterControls(sectionId, isComplete) + `</div>`;
                 return html;
+            },
+
+            updateClassifyPartial(sectionId) {
+                const sectionDef = APP_DATA.sections.find(s => s.id === sectionId);
+                const container = document.getElementById(`${sectionId}-classify-container`);
+                if (container) {
+                    container.innerHTML = this.renderClassifyInner(sectionDef);
+                }
             },
 
             // --- دالة عرض مسك الختام (الرسالة الذهبية تظهر مباشرة) ---
@@ -1811,10 +1872,10 @@
                     <p class="text-xl md:text-2xl font-medium text-slate-700 leading-relaxed fade-in px-4 md:px-8">${slide.text}</p>
                     
                     <div class="absolute bottom-6 w-full px-6 flex justify-between items-center left-0">
-                        <button ${state.currentIndex === 0 ? 'disabled class="opacity-0 pointer-events-none"' : `onclick="App.handleStoryNav('${sectionId}', -1)" class="w-12 h-12 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 md:hover:bg-slate-200 transition-colors active:scale-95"`}>
+                        <button ${state.currentIndex === 0 ? 'disabled' : `onclick="App.handleStoryNav('${sectionId}', -1)"`} class="w-12 h-12 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 md:hover:bg-slate-200 transition-colors active:scale-95 ${state.currentIndex === 0 ? 'opacity-0 pointer-events-none' : ''}">
                             <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                         </button>
-                        <button ${isComplete ? 'disabled class="opacity-0 pointer-events-none"' : `onclick="App.handleStoryNav('${sectionId}', 1)" class="w-12 h-12 flex items-center justify-center rounded-full bg-${theme}-100 text-${theme}-600 md:hover:bg-${theme}-200 transition-colors active:scale-95"`}>
+                        <button ${isComplete ? 'disabled' : `onclick="App.handleStoryNav('${sectionId}', 1)"`} class="w-12 h-12 flex items-center justify-center rounded-full bg-${theme}-100 text-${theme}-600 md:hover:bg-${theme}-200 transition-colors active:scale-95 ${isComplete ? 'opacity-0 pointer-events-none' : ''}">
                             <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                         </button>
                     </div>
@@ -1858,7 +1919,7 @@
                 return `<div class="mt-8 flex flex-col md:flex-row justify-center items-center gap-4 mx-auto w-full"><button onclick="App.handleResetSection('${sectionId}')" class="w-full md:w-auto px-8 py-3 md:py-4 rounded-full font-semibold text-xl md:text-2xl text-slate-600 bg-slate-100 md:hover:bg-slate-200 active:scale-95 transition-transform flex items-center justify-center gap-3">${ICONS.refresh} إعادة المحاولة</button>${!isLast ? `<button onclick="App.handleNextSection()" class="w-full md:w-auto px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-xl md:text-2xl text-white shadow-md transition-transform flex items-center justify-center gap-3 active:scale-95 bg-${sectionData.theme}-600 md:hover:bg-${sectionData.theme}-700">القسم التالي ${ICONS.arrowLeft}</button>` : ''}</div>`;
             },
             
-            // --- دوال التحديث الجزئي للبطاقات (Partial Updates) ---
+            // --- دوال التحديث الجزئي للبطاقات (Partial Updates) الأخرى ---
             updateErrorCardPartial(sectionId, qIndex) {
                 const qState = this.state.sectionData[sectionId][qIndex];
                 const { originalQuestion: q, step, selectedWordIndex, selectedOption, answerAnimate, shakeWordIndex } = qState;
@@ -2078,7 +2139,7 @@
                 }
             },
 
-            // --- دوال التحكم المحدثة الخالية من DOM Redraws لزر التلميح ---
+            // --- دوال التحكم المحدثة الخالية من DOM Redraws الشاملة ---
             toggleHint(sectionId, idx) {
                 const sectionDef = APP_DATA.sections.find(s => s.id === sectionId);
                 if (sectionDef.id === 'intro') return;
@@ -2095,8 +2156,10 @@
                 qState.showHint = !qState.showHint;
                 qState.hintAnimate = qState.showHint;
 
-                if (sectionDef.type === 'flashcards' || sectionDef.type === 'matching') {
-                    this.updateUI(); 
+                if (sectionDef.type === 'flashcards') {
+                    this.updateFlashcardsPartial(sectionId);
+                } else if (sectionDef.type === 'matching') {
+                    this.updateMatchingPartial(sectionId); 
                 } else {
                     const hintArea = document.getElementById(`hint-area-${sectionId}-${idx}`);
                     if (hintArea) {
@@ -2288,46 +2351,148 @@
             },
             
             handleDynamicSortClick(sectionId, optIndex) {
-                const state = this.state.sectionData[sectionId]; if (state.status === 'correct' || state.animatingOut) return;
-                const currentQState = state.questions[state.currentIndex]; const isCorrect = currentQState.options[optIndex].isCorrect;
-                if (isCorrect) { const isFirstAttempt = state.status === 'idle'; this.state.progress[sectionId].answered++; if (isFirstAttempt) { this.state.progress[sectionId].score++; } state.status = 'correct'; state.animatingOut = true; this.updateUI(); setTimeout(() => { state.currentIndex++; state.status = 'idle'; state.animatingOut = false; this.updateUI(); }, 400); } else { state.status = 'incorrect'; this.updateUI(); }
-            },
-            handleFlashcardFlip(sectionId) { const state = this.state.sectionData[sectionId]; if (state.animatingOut) return; state.isFlipped = !state.isFlipped; const cardInner = document.getElementById(`flashcard-inner-${sectionId}`); if (cardInner) { if (state.isFlipped) cardInner.classList.add('rotate-y-180'); else cardInner.classList.remove('rotate-y-180'); } },
-            handleFlashcardAnswer(sectionId, isCorrect) {
-                const state = this.state.sectionData[sectionId]; if (state.animatingOut) return;
-                this.state.progress[sectionId].answered++; if (isCorrect) this.state.progress[sectionId].score++;
-                state.animatingOut = true; this.updateUI();
-                setTimeout(() => { state.currentIndex++; state.isFlipped = false; state.animatingOut = false; state.showHint = false; state.hintAnimate = false; if (state.currentIndex >= state.cards.length) this.checkFinalEvaluation(); this.updateUI(); }, 400);
-            },
-            handleClassifyClick(sectionId, categoryId) {
-                const state = this.state.sectionData[sectionId]; if (state.status === 'correct' || state.animatingOut) return;
-                const currentQState = state.questions[state.currentIndex]; const currentQ = currentQState.originalQuestion; const isCorrect = categoryId === currentQ.categoryId;
+                const state = this.state.sectionData[sectionId]; 
+                if (state.status === 'correct' || state.animatingOut) return;
+                
+                const currentQState = state.questions[state.currentIndex]; 
+                const isCorrect = currentQState.options[optIndex].isCorrect;
+                
                 if (isCorrect) { 
-                    const isFirstAttempt = state.status === 'idle'; this.state.progress[sectionId].answered++; if (isFirstAttempt) this.state.progress[sectionId].score++; 
-                    state.status = 'correct'; state.animatingOut = true; this.updateUI(); 
-                    setTimeout(() => { state.placedItems[categoryId].push(currentQ); state.currentIndex++; state.status = 'idle'; state.animatingOut = false; this.updateUI(); }, 400); 
-                } else { state.status = 'incorrect'; this.updateUI(); }
+                    const isFirstAttempt = state.status === 'idle'; 
+                    this.state.progress[sectionId].answered++; 
+                    if (isFirstAttempt) { this.state.progress[sectionId].score++; } 
+                    
+                    state.status = 'correct'; 
+                    state.animatingOut = true; 
+                    this.updateSortPartial(sectionId); 
+                    
+                    setTimeout(() => { 
+                        state.currentIndex++; 
+                        state.status = 'idle'; 
+                        state.animatingOut = false; 
+                        this.updateSortPartial(sectionId); 
+                        this.updateTabs();
+                        
+                        if (state.currentIndex >= state.questions.length) {
+                            this.checkFinalEvaluation();
+                        }
+                    }, 400); 
+                } else { 
+                    state.status = 'incorrect'; 
+                    this.updateSortPartial(sectionId); 
+                }
             },
+            
+            handleFlashcardFlip(sectionId) { 
+                const state = this.state.sectionData[sectionId]; 
+                if (state.animatingOut) return; 
+                state.isFlipped = !state.isFlipped; 
+                const cardInner = document.getElementById(`flashcard-inner-${sectionId}`); 
+                if (cardInner) { 
+                    if (state.isFlipped) cardInner.classList.add('rotate-y-180'); 
+                    else cardInner.classList.remove('rotate-y-180'); 
+                } 
+            },
+            
+            handleFlashcardAnswer(sectionId, isCorrect) {
+                const state = this.state.sectionData[sectionId]; 
+                if (state.animatingOut) return;
+                
+                this.state.progress[sectionId].answered++; 
+                if (isCorrect) this.state.progress[sectionId].score++;
+                
+                state.animatingOut = true; 
+                this.updateFlashcardsPartial(sectionId);
+                
+                setTimeout(() => { 
+                    state.currentIndex++; 
+                    state.isFlipped = false; 
+                    state.animatingOut = false; 
+                    state.showHint = false; 
+                    state.hintAnimate = false; 
+                    
+                    this.updateFlashcardsPartial(sectionId);
+                    this.updateTabs();
+                    
+                    if (state.currentIndex >= state.cards.length) {
+                        this.checkFinalEvaluation();
+                    }
+                }, 400);
+            },
+            
+            handleClassifyClick(sectionId, categoryId) {
+                const state = this.state.sectionData[sectionId]; 
+                if (state.status === 'correct' || state.animatingOut) return;
+                
+                const currentQState = state.questions[state.currentIndex]; 
+                const currentQ = currentQState.originalQuestion; 
+                const isCorrect = categoryId === currentQ.categoryId;
+                
+                if (isCorrect) { 
+                    const isFirstAttempt = state.status === 'idle'; 
+                    this.state.progress[sectionId].answered++; 
+                    if (isFirstAttempt) this.state.progress[sectionId].score++; 
+                    
+                    state.status = 'correct'; 
+                    state.animatingOut = true; 
+                    this.updateClassifyPartial(sectionId); 
+                    
+                    setTimeout(() => { 
+                        state.placedItems[categoryId].push(currentQ); 
+                        state.currentIndex++; 
+                        state.status = 'idle'; 
+                        state.animatingOut = false; 
+                        
+                        this.updateClassifyPartial(sectionId);
+                        this.updateTabs();
+                        
+                        if (state.currentIndex >= state.questions.length) {
+                            this.checkFinalEvaluation();
+                        }
+                    }, 400); 
+                } else { 
+                    state.status = 'incorrect'; 
+                    this.updateClassifyPartial(sectionId); 
+                }
+            },
+            
             recordProgress(sectionId, isCorrect) { this.state.progress[sectionId].answered++; if (isCorrect) this.state.progress[sectionId].score++; },
             scrollToContent() { requestAnimationFrame(() => { setTimeout(() => { const target = document.getElementById('scroll-target'); if (target) { const stickyTabs = document.getElementById('sticky-tabs-container'); const headerOffset = stickyTabs ? stickyTabs.offsetHeight : 80; const elementPosition = target.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - headerOffset; window.scrollTo({ top: offsetPosition, behavior: 'smooth' }); } }, 30); }); },
             scrollTabIntoView(tabId) { requestAnimationFrame(() => { setTimeout(() => { const tabBtn = document.getElementById(`tab-${tabId}`); const container = document.getElementById('tabs-container'); if (tabBtn && container) { const containerRect = container.getBoundingClientRect(); const btnRect = tabBtn.getBoundingClientRect(); if (tabId === APP_DATA.sections[0].id) { container.scrollBy({ left: (btnRect.right - containerRect.right) + 16, behavior: 'smooth' }); } else { container.scrollBy({ left: (btnRect.left + btnRect.width / 2) - (containerRect.left + containerRect.width / 2), behavior: 'smooth' }); } } }, 30); }); },
             handleTabChange(tabId) { this.state.activeTab = tabId; this.updateUI(); this.scrollToContent(); this.scrollTabIntoView(tabId); },
             handleNextSection() { const currentIndex = APP_DATA.sections.findIndex(s => s.id === this.state.activeTab); if (currentIndex < APP_DATA.sections.length - 1) this.handleTabChange(APP_DATA.sections[currentIndex + 1].id); },
             handleResetSection(sectionId) {
-                const secDef = APP_DATA.sections.find(s => s.id === sectionId); this.state.progress[sectionId].answered = 0; this.state.progress[sectionId].score = 0;
-                if (secDef.type === 'mcq') this.state.sectionData[sectionId] = secDef.questions.map(q => ({ originalQuestion: q, options: shuffleArray(q.options.map((opt, oIdx) => ({ text: opt, isCorrect: oIdx === q.correct }))), answered: false, selectedOption: null, showHint: false, hintAnimate: false, answerAnimate: false }));
+                const secDef = APP_DATA.sections.find(s => s.id === sectionId); 
+                
+                // 1. إعادة تعيين التقدم (للأقسام التفاعلية التي تحوي درجات فقط لحماية الأقسام الشارحة)
+                if (!['intro', 'story', 'golden_envelope', 'style_lab', 'radar', 'contrast_cards', 'toolbelt'].includes(secDef.type)) {
+                    this.state.progress[sectionId].answered = 0; 
+                    this.state.progress[sectionId].score = 0;
+                } else if (secDef.type === 'story') {
+                    this.state.progress[sectionId].answered = 1; 
+                    this.state.progress[sectionId].score = secDef.slides.length;
+                } else {
+                    this.state.progress[sectionId].answered = 1; 
+                    this.state.progress[sectionId].score = 1;
+                }
+
+                // 2. إعادة تعيين بيانات القسم (State) بناءً على النوع بدقة
+                if (secDef.type === 'mcq') { this.state.sectionData[sectionId] = secDef.questions.map(q => ({ originalQuestion: q, options: shuffleArray(q.options.map((opt, oIdx) => ({ text: opt, isCorrect: oIdx === q.correct }))), answered: false, selectedOption: null, showHint: false, hintAnimate: false, answerAnimate: false })); }
                 else if (secDef.type === 'classify') { let placedItems = {}; secDef.categories.forEach(c => placedItems[c.id] = []); this.state.sectionData[sectionId] = { questions: shuffleArray(secDef.questions).map(q => ({ originalQuestion: q, showHint: false, hintAnimate: false })), currentIndex: 0, status: 'idle', placedItems: placedItems, animatingOut: false }; }
-                else if (secDef.type === 'error_correction') this.state.sectionData[sectionId] = secDef.questions.map(q => ({ originalQuestion: q, options: shuffleArray(q.options.map((opt, oIdx) => ({ text: opt, isCorrect: oIdx === q.correctOptionIndex }))), step: 1, selectedWordIndex: null, selectedOption: null, showHint: false, hintAnimate: false, optionsAnimate: false, answerAnimate: false, shakeWordIndex: null }));
-                else if (secDef.type === 'flashcards') this.state.sectionData[sectionId] = { cards: secDef.cards, currentIndex: 0, isFlipped: false, animatingOut: false, showHint: false, hintAnimate: false };
-                else if (secDef.type === 'sort') this.state.sectionData[sectionId] = { questions: secDef.questions.map(q => ({ originalQuestion: q, options: q.options.map((opt, i) => ({ text: opt, isCorrect: i === q.correct })), showHint: false, hintAnimate: false })), currentIndex: 0, status: 'idle', animatingOut: false };
-                else if (secDef.type === 'spotting') this.state.sectionData[sectionId] = secDef.questions.map(q => ({ originalQuestion: q, answered: false, selectedWordIndex: null, showHint: false, hintAnimate: false, answerAnimate: false, shakeWordIndex: null })); 
-                else if (secDef.type === 'golden_envelope') this.state.sectionData[sectionId] = { status: 'opened' };
-                else if (secDef.type === 'story') { this.state.sectionData[sectionId] = { currentIndex: 0 }; this.state.progress[sectionId].answered = 1; this.state.progress[sectionId].score = secDef.slides.length; }
+                else if (secDef.type === 'error_correction') { this.state.sectionData[sectionId] = secDef.questions.map(q => ({ originalQuestion: q, options: shuffleArray(q.options.map((opt, oIdx) => ({ text: opt, isCorrect: oIdx === q.correctOptionIndex }))), step: 1, selectedWordIndex: null, selectedOption: null, showHint: false, hintAnimate: false, optionsAnimate: false, answerAnimate: false, shakeWordIndex: null })); }
+                else if (secDef.type === 'flashcards') { this.state.sectionData[sectionId] = { cards: secDef.cards, currentIndex: 0, isFlipped: false, animatingOut: false, showHint: false, hintAnimate: false }; }
+                else if (secDef.type === 'sort') { this.state.sectionData[sectionId] = { questions: secDef.questions.map(q => ({ originalQuestion: q, options: q.options.map((opt, i) => ({ text: opt, isCorrect: i === q.correct })), showHint: false, hintAnimate: false })), currentIndex: 0, status: 'idle', animatingOut: false }; }
+                else if (secDef.type === 'spotting') { this.state.sectionData[sectionId] = secDef.questions.map(q => ({ originalQuestion: q, answered: false, selectedWordIndex: null, showHint: false, hintAnimate: false, answerAnimate: false, shakeWordIndex: null })); }
+                else if (secDef.type === 'golden_envelope') { this.state.sectionData[sectionId] = { status: 'opened' }; }
+                else if (secDef.type === 'story') { this.state.sectionData[sectionId] = { currentIndex: 0 }; }
                 else if (secDef.type === 'hotspot') { this.state.sectionData[sectionId] = secDef.questions.map(q => ({ originalQuestion: q, selectedTargets: [], answered: false, showHint: false, hintAnimate: false, answerAnimate: false, shakeWordId: null })); }
                 else if (secDef.type === 'matching') { this.state.sectionData[sectionId] = { rightItems: shuffleArray(secDef.pairs.map(p => ({ id: p.id, text: p.right }))), leftItems: shuffleArray(secDef.pairs.map(p => ({ id: p.id, text: p.left }))), selectedRight: null, selectedLeft: null, matchedPairs: [], wrongAttempt: false }; }
                 else if (secDef.type === 'style_lab' || secDef.type === 'toolbelt') { this.state.sectionData[sectionId] = { currentIdx: 0, selectedId: null }; }
-                else if (secDef.type === 'radar' || secDef.type === 'contrast_cards') { this.state.sectionData[sectionId] = { activeBranch: null }; }
-                this.updateUI(); this.scrollToContent();
+                else if (secDef.type === 'intro' || secDef.type === 'contrast_cards') { this.state.sectionData[sectionId] = { activeIndex: 0 }; }
+                else if (secDef.type === 'radar') { this.state.sectionData[sectionId] = { activeBranch: null }; }
+                
+                this.updateUI(); 
+                this.scrollToContent();
             },
             handleGlobalRestart() { this.initSectionData(); if (APP_DATA.sections.length > 0) this.state.activeTab = APP_DATA.sections[0].id; this.updateUI(); this.scrollTabIntoView(this.state.activeTab); requestAnimationFrame(() => { const header = document.getElementById('main-header'); window.scrollTo({ top: header ? header.offsetHeight : 80, behavior: 'smooth' }); }); },
             
