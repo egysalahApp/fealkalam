@@ -158,6 +158,7 @@
             xCircleLarge: `<svg class="w-7 h-7 md:w-8 md:h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`,
             refresh: `<svg class="w-5 h-5 md:w-6 md:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>`,
             arrowLeft: `<svg class="w-5 h-5 md:w-6 md:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>`,
+            arrowRight: `<svg class="w-5 h-5 md:w-6 md:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`,
             medal: `<svg class="w-24 h-24 md:w-32 md:h-32 mx-auto text-amber-400 mb-6 drop-shadow-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>`,
             tray: `<svg class="w-8 h-8 md:w-12 md:h-12 mb-2 opacity-80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>`,
             flipIcon: `<svg class="w-6 h-6 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>`
@@ -189,81 +190,113 @@
                     ]
                 },
 
-                // 2. البطاقات المنزلقة (Story Mode)
-                {
-                    id: "story_1",
-                    type: "story",
-                    title: "محطات الرحلة",
-                    theme: "teal",
-                    description: "تصفح البطاقات لتتعرف على أبرز الأفكار والملاحظات التي سجلها الطهطاوي في رحلته.",
-                    slides: [
-                        { title: "الأطروحة الأساسية", text: "يرى الكاتب ضرورة الاقتباس من علوم الغرب وفنونه، بشرط أساسي ألا يخالف ذلك نص الشريعة المحمدية.", icon: "⚖️" },
-                        { title: "ذكاء وتجديد", text: "يتميز الباريزيون بذكاء العقل ودقة الفهم، وليسوا أسراء للتقليد، بل يحبون ابتكار الجديد في فنونهم دائمًا.", icon: "💡" },
-                        { title: "تنوع الملبس", text: "يولع الفرنسيون بالتغيير والتنوع، لا سيما في الملبس، فهم لا يتركون البرنيطة بل ينوعون في أشكالها.", icon: "🎩" },
-                        { title: "ثبات السياسة", text: "رغم حبهم الظاهر للتغيير، إلا أن آراءهم في السياسة ثابتة لا تتغير، فكل فرد يدوم على رأيه.", icon: "🏛️" },
-                        { title: "الكرم والبخل", text: "يواسون بأقوالهم وأفعالهم لا بأموالهم، وهم في الحقيقة أقرب للبخل من الكرم، فمعدن الكرم الحقيقي في العرب.", icon: "💰" }
-                    ]
-                },
-
-                // 3. رادار النمط الكتابي (Radar)
+                // 2. رادار النمط الكتابي (Interactive Diagram)
                 {
                     id: "radar",
                     type: "radar",
                     title: "رادار النمط",
                     theme: "indigo",
-                    description: "مخطط تفاعلي يمثل الهيكل البنائي للنص. اقرأ الفكرة المركزية ثم تتبع الأذرع المتفرعة منها.",
-                    center: "ضرورة الاقتباس من الغرب بما يوافق الشريعة الإسلامية",
-                    arms: [
-                        { title: "سيرورة الحجاج (ما يُستحسن)", details: "ذكاء العقل، دقة الفهم، عدم التقليد، حب التجديد، إتقان العمل، والتمسك بالوطن." },
-                        { title: "سيرورة الحجاج (ما يُستهجن)", details: "البخل (المواساة بالأقوال لا الأموال)، والإسراف في حظوظ النفس والشهوات." },
-                        { title: "النتيجة ضمنية", details: "ترك الكاتب الحكم النهائي للقارئ ليأخذ النافع ويترك الضار." }
-                    ]
+                    description: "مخطط تفاعلي يمثل الهيكل البنائي للنص. انقر على الأذرع المتفرعة من الفكرة المركزية لاكتشاف التفاصيل.",
+                    mapData: {
+                        center: { title: "الأطروحة الأساسية", text: "الاقتباس من الغرب بما يوافق الشريعة" },
+                        branches: [
+                            { id: "b1", title: "الحجاج (المُستحسن)", text: "ذكاء العقل، دقة الفهم، حب التجديد، إتقان العمل، ومحبة الأوطان.", color: "emerald", icon: "👍" },
+                            { id: "b2", title: "الحجاج (المُستهجن)", text: "البخل (المواساة بالأقوال فقط)، والإسراف في حظوظ النفس والشهوات.", color: "rose", icon: "👎" },
+                            { id: "b3", title: "النتيجة (ضمنية)", text: "ترك الكاتب الحكم النهائي للقارئ ليأخذ النافع ويترك ما يتعارض مع الهوية.", color: "sky", icon: "⚖️" },
+                            { id: "b4", title: "الحقول المعجمية", text: "معجم العلم، معجم التغير، ومعجم القيم الثابتة.", color: "amber", icon: "📚" }
+                        ]
+                    }
                 },
 
-                // 4. مختبر الأسلوب (Style Lab)
+                // 3. مختبر الأسلوب (Style Lab - Interactive Excerpts)
                 {
                     id: "style_lab",
                     type: "style_lab",
                     title: "مختبر الأسلوب",
                     theme: "violet",
-                    description: "شاشة تفاعلية تعرض أسرار الصياغة. اقرأ التركيب وتعرف على وظيفته البلاغية.",
-                    content: [
-                        { title: "الجمل الاسمية", text: "«أنهم يتنوعون فيه» / «آراؤهم لا تتغير»", explanation: "استخدمها الكاتب للدلالة على الثبات والاستقرار، فحبهم للتغيير ليس مطلقًا." },
-                        { title: "الجمل الفعلية الماضية", text: "«سهل لي الدخول...»", explanation: "استخدامها هنا وظيفته السرد وحكاية أحداث الرحلة." },
-                        { title: "ضمائر المتكلم", text: "«لي، ما قصرت، أنطقتها»", explanation: "سيطرت في البداية؛ ليعلن الكاتب عن تبنيه أطروحة ورأيًا شخصيًا." },
-                        { title: "الأسلوب المباشر", text: "غياب الصور الخيالية والمحسنات المتكلفة", explanation: "لأن الكاتب يركز على المضمون والوصف الموضوعي بهدف الإقناع، لا إثارة العواطف." }
+                    description: "اقرأ القطع النصية التالية مرتبة حسب تسلسلها في النص، وانقر على الكلمات الملونة لاكتشاف أسرار صياغتها البلاغية.",
+                    excerpts: [
+                        {
+                            segments: [
+                                { text: "وقد " },
+                                { id: "h4", text: "سهل لي", isHighlight: true, explanation: "فعل ماضٍ وظيفته هنا السرد وحكاية أحداث الرحلة التاريخية." },
+                                { text: " الدخول في خدمة صاحب السعادة أولاً في وظيفة واعظ، فـ " },
+                                { id: "h5", text: "ما قصرت", isHighlight: true, explanation: "استخدام ضمير المتكلم (التاء) ليعلن الكاتب عن تبنيه رأيًا شخصيًّا وأطروحة واضحة." },
+                                { text: " في أن قيدت في سفري رحلة صغيرة." }
+                            ]
+                        },
+                        {
+                            segments: [
+                                { text: "فَاعْلَمْ أنَّ الباريزيين يختصون بذكاء العقل، ودقة الفهم، " },
+                                { id: "h1", text: "وليسوا أسراء التقليد أصلاً", isHighlight: true, explanation: "جملة منفية، تنفي عنهم صفة الجمود وتؤكد تحرر عقولهم." },
+                                { text: "، بل " },
+                                { id: "h2", text: "يحبّون دائمًا", isHighlight: true, explanation: "فعل مضارع يفيد التجدد والاستمرار في البحث وحب التغيير." },
+                                { text: " معرفة أصل الشيء، " },
+                                { id: "h3", text: "وآراؤهم في السياسة لا تتغير", isHighlight: true, explanation: "جملة اسمية للدلالة على الثبات والاستقرار، فحبهم للتغيير ليس مطلقًا." },
+                                { text: " طوال حياتهم." }
+                            ]
+                        },
+                        {
+                            segments: [
+                                { text: "وليس عندهم المواساة إلا بأقوالهم وأفعالهم، " },
+                                { id: "h6", text: "لا بأموالهم", isHighlight: true, explanation: "عطف بـ (لا) يثبت المواساة القولية وينفي المالية لتأكيد بخلهم." },
+                                { text: "، وهم في الحقيقة أقرب للبخل من الكرم، " },
+                                { id: "h7", text: "والسبب في ذلك أن الكرم في العرب.", isHighlight: true, explanation: "استخدام حجة المقارنة لتعليل بخل الفرنسيين وإثبات أصالة الكرم العربي." }
+                            ]
+                        },
+                        {
+                            segments: [
+                                { text: "فكأن لسان حالهم يقول: " },
+                                { id: "h8", text: "إن الليل والنهار يعملان فيك", isHighlight: true, explanation: "صورة بيانية (استعارة مكنية) شبه الليل والنهار بشخصين يعملان، لبيان شدة تأثير الزمن." },
+                                { text: " " },
+                                { id: "h9", text: "فاعمل فيهما.", isHighlight: true, explanation: "أسلوب إنشائي (أمر) غرضه الحث والنصح على اغتنام الوقت والاجتهاد الدائم." }
+                            ]
+                        }
                     ]
                 },
 
-                // 5. بطاقات المقارنة (Contrast Cards)
-                {
-                    id: "contrast_cards",
-                    type: "contrast_cards",
-                    title: "المقارنات",
-                    theme: "amber",
-                    description: "بطاقات تبرز المفارقات التي يعقدها الكاتب في النص لترسيخ الفكرة بالضد.",
-                    pairs: [
-                        { right: "اللباس (متغير)", left: "السياسة (ثابت)", desc: "الباريزيون يحبون التغيير في الملبس وتنوعه، لكن آراءهم ومذاهبهم في السياسة ثابتة لا تتغير." },
-                        { right: "الكرم العربي", left: "البخل الفرنسي", desc: "المواساة عند الفرنسيين بالأقوال لا بالأموال، بينما الكرم الحقيقي في العرب." },
-                        { right: "التولع بالجديد", left: "التمسك بالعادات", desc: "يحبون التولع بالأشياء الجديدة، لكنهم لا يزوجون الزنجية للأبيض محافظة على لونهم وعاداتهم." }
-                    ]
-                },
-
-                // 6. شريط الأدوات اللغوية (Toolbelt)
+                // 4. الأدوات اللغوية (Toolbelt - Separate Tools & Excerpts)
                 {
                     id: "toolbelt",
                     type: "toolbelt",
                     title: "الأدوات اللغوية",
                     theme: "teal",
-                    description: "استكشف الأدوات اللغوية التي وظفها الكاتب لدعم حججه. انقر على الأداة لترى أثرها.",
-                    tools: [
-                        { name: "أدوات التوكيد", highlight: "«إنّ، قد، أنّ»", desc: "استخدمها بكثرة (مثل: أن خير الأمور، قد سهل لي) لإقناع القارئ بأهمية الموضوع وجدية الطرح." },
-                        { name: "النفي", highlight: "«لا، ما، ليس»", desc: "وظفها حجاجيًا (مثل: ما قصرت، ألا أحيد)؛ للتأكيد على ابتعاده عن الهوى وتحريه للحق." },
-                        { name: "المحسنات البديعية", highlight: "«السجع والطباق»", desc: "استخدم السجع (تعود/مشهود) والطباق (القديم/الحديث)؛ لإحداث جرس موسيقي وتأكيد المعنى." }
+                    description: "انقر على صناديق الأدوات لتحديد موضعها في كل قطعة (مرتبة كالنص الأصلي) واكتشاف أثرها الدلالي.",
+                    excerpts: [
+                        {
+                            text: "من المركوز في الأسماع في القديم والحديث، أن فضله مشهود، وأن ثمرته تعود.",
+                            tools: [
+                                { id: "t4", name: "الطباق", targets: ["القديم", "والحديث"], explanation: "طباق يبرز المعنى ويوضحه ويؤكد شمولية الفكرة لكل الأزمنة." },
+                                { id: "t5", name: "السجع", targets: ["مشهود", "تعود"], explanation: "محسن بديعي صوتي يحدث جرسًا موسيقيًّا يجذب انتباه القارئ." },
+                                { id: "t6", name: "التوكيد", targets: ["أن فضله", "وأن ثمرته"], explanation: "استخدام أداة التوكيد (أن) لترسيخ حقيقة فضل العلم في ذهن القارئ." }
+                            ]
+                        },
+                        {
+                            text: "وقد أشهَدتُ الله سبحانه وتعالى على ألا أحيد في جميع ما أقوله عن طريق الحق، ومن المعلوم أني لا أستحسن إلا ما لم يُخالف نص الشريعة المحمدية.",
+                            tools: [
+                                { id: "t1", name: "أدوات التوكيد", targets: ["قد", "أني"], explanation: "استخدم الكاتب التوكيد لإقناع القارئ بأهمية الموضوع وجدية طرحه في نقل محاسن الغرب." },
+                                { id: "t2", name: "النفي", targets: ["ألا أحيد", "لا أستحسن", "لم يُخالف"], explanation: "وظّف النفي حجاجيًّا ليؤكد ابتعاده عن الهوى وتحريه التام للحق، ورفضه للتقليد الأعمى." },
+                                { id: "t3", name: "الاستثناء", targets: ["إلا"], explanation: "تُفيد أداة الاستثناء هنا (الحصر والقصر)، ليقصر استحسانه حصريًّا على ما يوافق الشريعة." }
+                            ]
+                        },
+                        {
+                            text: "ومع كثرة ميلهم إلى أوطانهم يميلون إلى الأسفار ، فَقَدْ يمكثون السنين العديدة طوافين بَيْنَ المشرق والمغرب.",
+                            tools: [
+                                { id: "t9", name: "الطباق", targets: ["المشرق", "والمغرب"], explanation: "طباق يوضح مدى اتساع أسفارهم وتجوالهم في كل مكان بحثًا عن المعرفة." },
+                                { id: "t10", name: "صيغة المبالغة", targets: ["طوافين"], explanation: "صيغة مبالغة على وزن (فَعَّالين) تدل على كثرة السفر والترحال." }
+                            ]
+                        },
+                        {
+                            text: "وليس عندهم المواساة إلا بأقوالهم وأفعالهم، لا بأموالهم، إلا أنهم لا يمنعون عن أصحابهم ما يطلبون استعارته لا هبته.",
+                            tools: [
+                                { id: "t7", name: "القصر (نفي واستثناء)", targets: ["ليس", "إلا بأقوالهم"], explanation: "أسلوب قصر يفيد التخصيص والتوكيد على انحصار مواساتهم في الكلام فقط." },
+                                { id: "t8", name: "العطف بـ (لا)", targets: ["لا بأموالهم", "لا هبته"], explanation: "حرف عطف يثبت الحكم لما قبله وينفيه عما بعده، لتوكيد حرصهم الشديد على المال." }
+                            ]
+                        }
                     ]
                 },
 
-                // 7. فرز البطاقات (Lexical Fields)
+                // 5. فرز البطاقات (Lexical Fields)
                 {
                     id: "test_sort",
                     type: "sort",
@@ -278,7 +311,7 @@
                     ]
                 },
 
-                // 8. المطابقة والتوصيل (الحجج والبلاغة)
+                // 6. المطابقة والتوصيل (الحجج والبلاغة - أسئلة إضافية)
                 {
                     id: "test_matching",
                     type: "matching",
@@ -288,12 +321,16 @@
                     pairs: [
                         { id: "m1", right: "«وهم أقرب للبخل... السبب أن الكرم في العرب»", left: "حجة المقارنة." },
                         { id: "m2", right: "«نقل فؤادك ما استطعت من الهوى»", left: "حجة النقل (شاهد شعري)." },
-                        { id: "m3", right: "«تخليص الإبريز في تلخيص باريز»", left: "جناس وسجع لجذب الانتباه." },
-                        { id: "m4", right: "«القديم والحديث»", left: "طباق يبرز المعنى ويؤكده." }
+                        { id: "m3", right: "«أليس بكاف لذي فكرة»", left: "حجة عقلية أخلاقية." },
+                        { id: "m4", right: "«تخليص الإبريز في تلخيص باريز»", left: "جناس وسجع لجذب الانتباه." },
+                        { id: "m5", right: "«القديم والحديث»", left: "طباق يبرز المعنى ويؤكده." },
+                        { id: "m6", right: "«الباريزيين، الفرنساوية، أهل باري»", left: "تنويع لفظي يدل على سعة الثقافة." },
+                        { id: "m7", right: "«إن الليل والنهار يعملان فيك»", left: "حجة على عدم إهمالهم للأشغال." },
+                        { id: "m8", right: "«ليسوا أسراء التقليد.. بل يحبون»", left: "نفي وإثبات لدفع التوهم." }
                     ]
                 },
 
-                // 9. النص التفاعلي (Hotspot)
+                // 7. النص التفاعلي (Hotspot - أسئلة إضافية)
                 {
                     id: "test_hotspot",
                     type: "hotspot",
@@ -313,6 +350,49 @@
                             hint: "كلمة تعني المشابهة مع الآخرين."
                         },
                         {
+                            task: "استخرج أسلوبًا إنشائيًا غرضه النصح وجذب الانتباه.",
+                            requiredCount: 1,
+                            paragraph: [
+                                { id: "hx_1", text: "فَاعْلَمْ ", isTarget: true },
+                                { id: "hx_2", text: "أنَّ الباريزيين يختصون بذكاء العقل، ودقة الفهم", isTarget: false }
+                            ],
+                            explanation: "استخدم فعل الأمر (فاعلم) لجذب انتباه القارئ للحجة القادمة.",
+                            hint: "فعل أمر صريح."
+                        },
+                        {
+                            task: "استخرج جملة منفية تؤكد تحري الكاتب للحق وابتعاده عن الهوى والمجاملة.",
+                            requiredCount: 1,
+                            paragraph: [
+                                { id: "h8_1", text: "وقد أشهَدتُ الله سبحانه وتعالى على ", isTarget: false },
+                                { id: "h8_2", text: "ألا أحيد ", isTarget: true },
+                                { id: "h8_3", text: "في جميع ما أقوله عن طريق الحق", isTarget: false }
+                            ],
+                            explanation: "الجملة (ألا أحيد) تعني (أن لا أميل)، وهو نفي يُثبت به موضوعيته التامة.",
+                            hint: "تركيب ينفي فيه الميل عن الحق."
+                        },
+                        {
+                            task: "استخرج أداة استثناء تُبرز بخلهم المالي وعدم تفريطهم في أموالهم بسهولة.",
+                            requiredCount: 1,
+                            paragraph: [
+                                { id: "h2_1", text: "وليس عندهم المواساة إلا بأقوالهم وأفعالهم، لا بأموالهم، ", isTarget: false },
+                                { id: "h2_2", text: "إلا أنهم لا يمنعون ", isTarget: true },
+                                { id: "h2_3", text: "عن أصحابهم ما يطلبون استعارته", isTarget: false }
+                            ],
+                            explanation: "استخدم (إلا أنهم لا يمنعون) ليستدرك ويستثني الإعارة من بخلهم الشديد.",
+                            hint: "رابط يبدأ بحرف استثناء."
+                        },
+                        {
+                            task: "استخرج نعتًا مباشرًا استخدمه الكاتب في وصف النساء.",
+                            requiredCount: 1,
+                            paragraph: [
+                                { id: "hy_1", text: "ونساء الفرنساوية ", isTarget: false },
+                                { id: "hy_2", text: "بارعات الجمال ", isTarget: true },
+                                { id: "hy_3", text: "والطافة، حسان المسايرة", isTarget: false }
+                            ],
+                            explanation: "كلمة (بارعات) نعت مباشر يصف جمالهن.",
+                            hint: "كلمة تصف الجمال وتُعرب نعتًا."
+                        },
+                        {
                             task: "استخرج رابطًا يدل على التعليل يُفسر إلقاء الباريزيين أنفسهم في المهالك.",
                             requiredCount: 1,
                             paragraph: [
@@ -326,7 +406,7 @@
                     ]
                 },
 
-                // 10. صناديق التصنيف (Classify)
+                // 8. صناديق التصنيف (Classify)
                 {
                     id: "test_classify",
                     type: "classify",
@@ -338,28 +418,14 @@
                         { id: 'cat_bad', label: 'مُستهجنة', theme: 'rose' }
                     ],
                     questions: [
-                        { text: 'توفيتهم غالبا بالحقوق الواجبة عليهم.', categoryId: 'cat_good', explanation: 'من الصفات الإيجابية التي أشاد بها.', hint: 'أداء الحقوق لأصحابها.' },
+                        { text: 'توفيتهم غالبًا بالحقوق الواجبة عليهم.', categoryId: 'cat_good', explanation: 'من الصفات الإيجابية التي أشاد بها.', hint: 'أداء الحقوق لأصحابها.' },
                         { text: 'الاعتراف بشكر المنعم وقبح كفر النعم.', categoryId: 'cat_good', explanation: 'الاعتراف بالجميل سمة أخلاقية رفيعة.', hint: 'خُلقٌ إنساني نبيل.' },
                         { text: 'المواساة بالأقوال والأفعال لا بالأموال.', categoryId: 'cat_bad', explanation: 'اعتبره نوعًا من البخل المذموم.', hint: 'عدم مساعدة الآخرين بالمال.' },
                         { text: 'صرف الأموال في الشهوات وحظوظ النفس.', categoryId: 'cat_bad', explanation: 'الإسراف في الشهوات الشخصية رآه سلوكًا سلبيًا يُستهجن.', hint: 'إنفاق المال في غير موضعه.' }
                     ]
                 },
 
-                // 11. الاختيار من متعدد
-                {
-                    id: "test_mcq",
-                    type: "mcq",
-                    title: "التقييم",
-                    theme: "slate",
-                    description: "اختر الإجابة الصحيحة لقياس فهمك الدقيق لتفاصيل النص وبنيته الحجاجية.",
-                    questions: [
-                        { text: "ما الشرط الأساسي الذي وضعه الطهطاوي لاستحسان أمور الغرب والاقتباس منها؟", options: ['أن تكون من العلوم الحديثة فقط.', 'ألا تخالف نص الشريعة المحمدية.', 'أن توافق العادات العربية القديمة.'], correct: 1, hint: 'ضابط ديني يحكم عملية النقل من الثقافات الأخرى.', explanation: 'اشترط الطهطاوي بشكل واضح ألا يُخالف ما ينقله نصوص الشريعة الإسلامية السمحة.' },
-                        { text: "لماذا يُصنف هذا النص ضمن (أدب الرحلات) وليس (قصة قصيرة)؟", options: ['لأن الأحداث والشخصيات فيه حقيقية وليست خيالية.', 'لاعتماده على السرد التاريخي القديم.', 'لاحتوائه على أبيات شعرية وقوافٍ.'], correct: 0, hint: 'عنصر الواقعية والمشاهدة الحية.', explanation: 'أدب الرحلة يعتمد على تسجيل مشاهدات واقعية لأحداث وشخصيات وأماكن حقيقية زارها الكاتب، بخلاف القصة التي تعتمد على الخيال.' },
-                        { text: "كيف فسر الكاتب حب الفرنسيين المستمر للتجديد في (البرنيطة) أو القبعة؟", options: ['أنهم يقلدون فيها شعوبًا أخرى كل فترة.', 'أنهم يتنوعون في أشكالها وألوانها مع الاحتفاظ بأصلها.', 'أنهم يتخلون عنها كليًا ويستبدلونها بعمامة.'], correct: 1, hint: 'تغيير في الشكل لا في الجوهر.', explanation: 'حبهم للتغيير لا يعني ترك الأصل بالكلية، بل هم ينوعون في أشكالها وألوانها كدليل على ولعهم بالجديد مع بقاء الأصل.' }
-                    ]
-                },
-
-                // 12. أثرٌ يبقى (الرسالة الذهبية)
+                // 9. أثرٌ يبقى (الرسالة الذهبية)
                 {
                     id: "test_golden",
                     type: "golden_envelope",
@@ -409,9 +475,17 @@
                 this.state.progress = {};
                 this.state.sectionData = {};
                 APP_DATA.sections.forEach(sec => {
-                    if (sec.type === 'intro' || sec.type === 'style_lab' || sec.type === 'radar' || sec.type === 'contrast_cards' || sec.type === 'toolbelt') { 
+                    if (sec.type === 'intro' || sec.type === 'contrast_cards') { 
                         this.state.progress[sec.id] = { answered: 1, total: 1, score: 1 }; 
                         this.state.sectionData[sec.id] = { activeIndex: 0 }; 
+                    }
+                    else if (sec.type === 'radar') {
+                        this.state.progress[sec.id] = { answered: 1, total: 1, score: 1 };
+                        this.state.sectionData[sec.id] = { activeBranch: null };
+                    }
+                    else if (sec.type === 'style_lab' || sec.type === 'toolbelt') {
+                        this.state.progress[sec.id] = { answered: 1, total: 1, score: 1 };
+                        this.state.sectionData[sec.id] = { currentIdx: 0, selectedId: null };
                     }
                     else if (sec.type === 'mcq') {
                         this.state.progress[sec.id] = { answered: 0, total: sec.questions.length, score: 0 };
@@ -580,54 +654,264 @@
 
             // --- دوال الأقسام الجديدة المضافة (New Custom Activities) ---
             
-            renderStyleLab(sectionData) {
-                let html = `<div class="max-w-4xl mx-auto fade-in">`;
-                if (sectionData.description) { html += `<div class="text-center mb-10 fade-in"><p class="text-lg md:text-xl text-${sectionData.theme}-800 font-semibold bg-${sectionData.theme}-50 bg-opacity-60 p-4 md:p-5 rounded-2xl shadow-sm inline-block w-full">${sectionData.description}</p></div>`; }
-                html += `<div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full fade-in">`;
-                sectionData.content.forEach((item) => {
-                    html += `
-                    <div class="bg-white rounded-[2rem] p-6 md:p-8 border-2 border-${sectionData.theme}-200 shadow-sm relative group cursor-pointer md:hover:-translate-y-2 md:hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-                        <div class="w-full flex items-center gap-3 mb-4">
-                            <div class="w-10 h-10 rounded-full bg-${sectionData.theme}-100 flex items-center justify-center text-xl shrink-0">🔬</div>
-                            <div class="text-${sectionData.theme}-700 font-bold text-xl md:text-2xl">${item.title}</div>
-                        </div>
-                        <div class="text-slate-800 text-xl md:text-2xl font-bold mb-4 bg-slate-50 p-4 rounded-xl border border-slate-100 leading-relaxed text-center">
-                            ${item.text}
-                        </div>
-                        <div class="text-slate-600 text-lg md:text-xl font-medium leading-relaxed bg-${sectionData.theme}-50/50 p-4 rounded-xl mt-auto border border-${sectionData.theme}-50">
-                            ${item.explanation}
-                        </div>
-                    </div>`;
-                });
-                html += `</div></div>`;
-                html += `<div class="w-full">` + this.renderSectionFooterControls(sectionData.id, true) + `</div>`;
-                return html;
-            },
-
             renderRadar(sectionData) {
-                let html = `<div class="max-w-4xl mx-auto fade-in flex flex-col items-center">`;
-                if (sectionData.description) { html += `<div class="text-center mb-10 fade-in w-full"><p class="text-lg md:text-xl text-${sectionData.theme}-800 font-semibold bg-${sectionData.theme}-50 bg-opacity-60 p-4 md:p-5 rounded-2xl shadow-sm inline-block w-full">${sectionData.description}</p></div>`; }
+                const map = sectionData.mapData;
+                const state = this.state.sectionData[sectionData.id];
                 
+                let html = `<div class="max-w-4xl mx-auto fade-in flex flex-col items-center" id="radar-container-${sectionData.id}">`;
+                if (sectionData.description) { 
+                    html += `<div class="text-center mb-10 w-full"><p class="text-lg md:text-xl text-${sectionData.theme}-800 font-semibold bg-${sectionData.theme}-50 bg-opacity-60 p-4 md:p-5 rounded-2xl shadow-sm inline-block w-full">${sectionData.description}</p></div>`; 
+                }
+                
+                // المركز
                 html += `
-                <div class="w-full max-w-md bg-${sectionData.theme}-600 text-white rounded-[2rem] p-6 md:p-8 text-center shadow-xl z-10 relative mb-8 border-4 border-white ring-4 ring-${sectionData.theme}-100 transform md:hover:scale-105 transition-transform">
-                    <div class="text-3xl mb-3">🎯</div>
-                    <h3 class="text-2xl md:text-3xl font-bold leading-relaxed">${sectionData.center}</h3>
+                <div class="w-full max-w-md bg-white border-4 border-${sectionData.theme}-500 text-slate-800 rounded-[2.5rem] p-6 md:p-8 text-center shadow-lg z-10 relative mb-12 md:hover:scale-105 transition-transform duration-300">
+                    <div class="text-xs md:text-sm font-bold text-${sectionData.theme}-500 mb-2 uppercase tracking-widest">${map.center.title}</div>
+                    <h3 class="text-2xl md:text-3xl font-bold leading-relaxed">${map.center.text}</h3>
                 </div>
                 `;
                 
-                html += `<div class="flex flex-col w-full gap-4 md:gap-6 relative before:content-[''] before:absolute before:right-8 md:before:right-1/2 before:top-[-2rem] before:bottom-0 before:w-1 before:bg-${sectionData.theme}-200 before:z-0">`;
-                sectionData.arms.forEach((arm) => {
+                // الأذرع كأزرار
+                html += `<div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full relative z-10 mb-8">`;
+                map.branches.forEach((branch, idx) => {
+                    const isActive = state.activeBranch === idx;
+                    const btnClass = isActive 
+                        ? `bg-${branch.color}-500 text-white shadow-md transform scale-105 ring-4 ring-${branch.color}-200` 
+                        : `bg-white text-slate-700 border-2 border-${branch.color}-200 md:hover:bg-${branch.color}-50`;
+                    
                     html += `
-                    <div class="bg-white rounded-2xl p-5 md:p-6 border-r-8 border-${sectionData.theme}-400 shadow-md flex flex-col w-full md:hover:-translate-x-2 transition-transform z-10 relative mr-4 md:mr-0 ml-0 md:ml-auto max-w-lg md:w-[calc(50%-2rem)] even:mr-auto even:ml-0 even:border-l-8 even:border-r-0 even:border-${sectionData.theme}-400">
-                        <div class="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-${sectionData.theme}-500 border-4 border-white shadow-sm hidden md:block" style="right: -2.7rem;"></div>
-                        <h4 class="text-xl md:text-2xl font-bold text-${sectionData.theme}-700 mb-3">${arm.title}</h4>
-                        <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed">${arm.details}</p>
-                    </div>
+                    <button onclick="App.handleRadarClick('${sectionData.id}', ${idx})" class="p-4 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 active:scale-95 ${btnClass}">
+                        <span class="text-3xl md:text-4xl">${branch.icon}</span>
+                        <span class="font-bold text-sm md:text-base text-center leading-snug">${branch.title}</span>
+                    </button>
                     `;
                 });
-                html += `</div></div>`;
+                html += `</div>`;
+
+                // منطقة عرض التفاصيل
+                html += `<div class="w-full min-h-[14rem] flex items-center justify-center transition-all duration-500 mb-6">`;
+                if (state.activeBranch !== null) {
+                    const activeBranch = map.branches[state.activeBranch];
+                    html += `
+                    <div class="bg-${activeBranch.color}-50 border-2 border-${activeBranch.color}-200 rounded-3xl p-6 md:p-8 shadow-inner w-full max-w-2xl text-center smooth-expand flex flex-col items-center justify-center">
+                        <div class="text-4xl md:text-5xl mb-4 bg-white p-4 rounded-full shadow-sm border border-${activeBranch.color}-100 shrink-0">${activeBranch.icon}</div>
+                        <h4 class="text-2xl font-bold text-${activeBranch.color}-800 mb-4">${activeBranch.title}</h4>
+                        <p class="text-xl md:text-2xl text-slate-700 font-medium leading-relaxed">${activeBranch.text}</p>
+                    </div>
+                    `;
+                } else {
+                    html += `
+                    <div class="border-2 border-dashed border-slate-300 rounded-3xl p-8 w-full max-w-2xl text-center text-slate-400 flex flex-col items-center justify-center fade-in bg-slate-50/50 min-h-[14rem]">
+                        <span class="text-4xl md:text-5xl mb-3 opacity-60">👆</span>
+                        <span class="text-lg md:text-xl font-medium">انقر على أحد الأذرع بالأعلى لعرض تفاصيله</span>
+                    </div>
+                    `;
+                }
+                html += `</div>`;
+
+                html += `</div>`;
+                html += `<div class="w-full mt-4">` + this.renderSectionFooterControls(sectionData.id, true) + `</div>`;
+                return html;
+            },
+
+            handleRadarClick(sectionId, idx) {
+                this.state.sectionData[sectionId].activeBranch = idx;
+                const container = document.getElementById(`radar-container-${sectionId}`);
+                if (container) {
+                    const sectionData = APP_DATA.sections.find(s => s.id === sectionId);
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = this.renderRadar(sectionData);
+                    container.innerHTML = tempDiv.querySelector(`#radar-container-${sectionId}`).innerHTML;
+                }
+            },
+
+            renderStyleLab(sectionData) {
+                const sectionId = sectionData.id;
+                const state = this.state.sectionData[sectionId];
+                let excerptHTML = this.getStyleLabExcerptHTML(sectionData, state);
+                
+                let html = `<div class="max-w-4xl mx-auto fade-in">`;
+                if (sectionData.description) { html += `<div class="text-center mb-8"><p class="text-lg md:text-xl text-${sectionData.theme}-800 font-semibold bg-${sectionData.theme}-50 bg-opacity-60 p-4 md:p-5 rounded-2xl shadow-sm inline-block w-full">${sectionData.description}</p></div>`; }
+                
+                html += `<div id="style-lab-container-${sectionId}" class="w-full relative min-h-[300px]">`;
+                html += excerptHTML;
+                html += `</div>`;
+                
+                html += `</div>`;
                 html += `<div class="w-full mt-6">` + this.renderSectionFooterControls(sectionData.id, true) + `</div>`;
                 return html;
+            },
+
+            getStyleLabExcerptHTML(sectionData, state) {
+                const sectionId = sectionData.id;
+                const excerpt = sectionData.excerpts[state.currentIdx];
+                const selectedSeg = excerpt.segments.find(s => s.id === state.selectedId);
+                const total = sectionData.excerpts.length;
+
+                let textHTML = '';
+                excerpt.segments.forEach(seg => {
+                    if (seg.isHighlight) {
+                        const isSelected = state.selectedId === seg.id;
+                        let classes = `inline font-bold px-1.5 py-0.5 rounded cursor-pointer transition-all duration-300 select-none `;
+                        if (isSelected) {
+                            classes += `bg-${sectionData.theme}-500 text-white shadow-md`;
+                        } else {
+                            classes += `bg-${sectionData.theme}-100 text-${sectionData.theme}-800 border-b-2 border-${sectionData.theme}-300 hover:bg-${sectionData.theme}-200`;
+                        }
+                        textHTML += `<span class="${classes}" onclick="App.handleStyleLabClick('${sectionId}', '${seg.id}')">${seg.text}</span>`;
+                    } else {
+                        textHTML += `<span class="text-slate-800">${seg.text}</span>`;
+                    }
+                });
+
+                let html = `
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-10 transition-all duration-300">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-${sectionData.theme}-600 font-bold text-lg md:text-xl">القطعة ${toArabicNum(state.currentIdx + 1)} من ${toArabicNum(total)}</span>
+                    </div>
+                    <div class="text-2xl md:text-3xl leading-[2.5] md:leading-[3] text-right font-medium text-slate-800 mb-8 bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 shadow-inner">
+                        ${textHTML}
+                    </div>
+                    
+                    <div class="min-h-[8rem] w-full transition-all duration-300">
+                        ${selectedSeg ? `
+                        <div class="bg-${sectionData.theme}-50 border border-${sectionData.theme}-200 rounded-2xl p-6 text-right smooth-expand">
+                            <h4 class="text-${sectionData.theme}-800 font-bold text-xl md:text-2xl mb-3 flex items-center gap-2"><span class="text-2xl">💡</span> التفسير البلاغي:</h4>
+                            <p class="text-lg md:text-xl text-slate-700 font-medium leading-relaxed">${selectedSeg.explanation}</p>
+                        </div>
+                        ` : `
+                        <div class="flex items-center justify-center h-full text-slate-400 font-medium text-lg md:text-xl border-2 border-dashed border-slate-200 rounded-2xl p-6 min-h-[8rem]">
+                            انقر على الكلمات الملونة في النص لاكتشاف وظيفتها البلاغية.
+                        </div>
+                        `}
+                    </div>
+                    
+                    <div class="flex justify-between items-center mt-8 pt-6 border-t border-slate-100">
+                        <button ${state.currentIdx === 0 ? 'disabled class="opacity-50 pointer-events-none"' : `onclick="App.handleStyleLabNav('${sectionId}', -1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 active:scale-95 transition-all text-lg">${ICONS.arrowRight} السابق</button>
+                        <button ${state.currentIdx === total - 1 ? 'disabled class="opacity-50 pointer-events-none"' : `onclick="App.handleStyleLabNav('${sectionId}', 1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-${sectionData.theme}-100 text-${sectionData.theme}-700 font-bold hover:bg-${sectionData.theme}-200 active:scale-95 transition-all text-lg">التالي ${ICONS.arrowLeft}</button>
+                    </div>
+                </div>`;
+                return html;
+            },
+
+            handleStyleLabClick(sectionId, id) {
+                this.state.sectionData[sectionId].selectedId = id;
+                const container = document.getElementById(`style-lab-container-${sectionId}`);
+                if (container) {
+                    const sectionData = APP_DATA.sections.find(s => s.id === sectionId);
+                    container.innerHTML = this.getStyleLabExcerptHTML(sectionData, this.state.sectionData[sectionId]);
+                }
+            },
+
+            handleStyleLabNav(sectionId, dir) {
+                const state = this.state.sectionData[sectionId];
+                const sectionData = APP_DATA.sections.find(s => s.id === sectionId);
+                const newIdx = state.currentIdx + dir;
+                if (newIdx >= 0 && newIdx < sectionData.excerpts.length) {
+                    state.currentIdx = newIdx;
+                    state.selectedId = null;
+                    const container = document.getElementById(`style-lab-container-${sectionId}`);
+                    if (container) {
+                        container.innerHTML = this.getStyleLabExcerptHTML(sectionData, state);
+                    }
+                }
+            },
+
+            renderToolbelt(sectionData) {
+                const sectionId = sectionData.id;
+                const state = this.state.sectionData[sectionId];
+                let excerptHTML = this.getToolbeltExcerptHTML(sectionData, state);
+                
+                let html = `<div class="max-w-4xl mx-auto fade-in">`;
+                if (sectionData.description) { html += `<div class="text-center mb-8 fade-in"><p class="text-lg md:text-xl text-${sectionData.theme}-800 font-semibold bg-${sectionData.theme}-50 bg-opacity-60 p-4 md:p-5 rounded-2xl shadow-sm inline-block w-full">${sectionData.description}</p></div>`; }
+                
+                html += `<div id="toolbelt-container-${sectionId}" class="w-full relative min-h-[300px]">`;
+                html += excerptHTML;
+                html += `</div>`;
+                
+                html += `</div>`;
+                html += `<div class="w-full mt-6">` + this.renderSectionFooterControls(sectionData.id, true) + `</div>`;
+                return html;
+            },
+
+            getToolbeltExcerptHTML(sectionData, state) {
+                const sectionId = sectionData.id;
+                const excerpt = sectionData.excerpts[state.currentIdx];
+                const selectedTool = excerpt.tools.find(t => t.id === state.selectedId);
+                const total = sectionData.excerpts.length;
+
+                let toolsHTML = `<div class="flex flex-wrap justify-center gap-3 mb-6">`;
+                excerpt.tools.forEach(tool => {
+                    const isSelected = state.selectedId === tool.id;
+                    const btnClass = isSelected 
+                        ? `bg-${sectionData.theme}-600 text-white shadow-md cursor-default` 
+                        : `bg-white text-slate-600 border-2 border-slate-200 hover:bg-slate-50 active:scale-95 cursor-pointer`;
+                    toolsHTML += `<button onclick="App.handleToolbeltClick('${sectionId}', '${tool.id}')" class="px-5 py-3 rounded-xl font-bold text-lg md:text-xl transition-all ${btnClass}">${tool.name}</button>`;
+                });
+                toolsHTML += `</div>`;
+
+                let highlightedText = excerpt.text;
+                if (selectedTool && selectedTool.targets) {
+                    selectedTool.targets.forEach(target => {
+                        const replaceWith = `<span class="bg-${sectionData.theme}-200 text-${sectionData.theme}-900 font-bold px-1.5 py-0.5 rounded shadow-sm">${target}</span>`;
+                        highlightedText = highlightedText.split(target).join(replaceWith);
+                    });
+                }
+
+                let html = `
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-10 transition-all duration-300">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-${sectionData.theme}-600 font-bold text-lg md:text-xl">القطعة ${toArabicNum(state.currentIdx + 1)} من ${toArabicNum(total)}</span>
+                    </div>
+                    
+                    ${toolsHTML}
+
+                    <div class="text-2xl md:text-3xl leading-[2.5] md:leading-[3] text-right font-medium text-slate-800 mb-8 bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 shadow-inner min-h-[8rem] transition-all">
+                        ${highlightedText}
+                    </div>
+                    
+                    <div class="min-h-[8rem] w-full transition-all duration-300">
+                        ${selectedTool ? `
+                        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-right smooth-expand">
+                            <h4 class="text-amber-800 font-bold text-xl md:text-2xl mb-3 flex items-center gap-2"><span class="text-2xl">🔍</span> أثر الأداة:</h4>
+                            <p class="text-lg md:text-xl text-slate-700 font-medium leading-relaxed">${selectedTool.explanation}</p>
+                        </div>
+                        ` : `
+                        <div class="flex items-center justify-center h-full text-slate-400 font-medium text-lg md:text-xl border-2 border-dashed border-slate-200 rounded-2xl p-6 min-h-[8rem]">
+                            انقر على أحد صناديق الأدوات بالأعلى لتحديد موقعها في النص.
+                        </div>
+                        `}
+                    </div>
+
+                    <div class="flex justify-between items-center mt-8 pt-6 border-t border-slate-100">
+                        <button ${state.currentIdx === 0 ? 'disabled class="opacity-50 pointer-events-none"' : `onclick="App.handleToolbeltNav('${sectionId}', -1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 active:scale-95 transition-all text-lg">${ICONS.arrowRight} السابق</button>
+                        <button ${state.currentIdx === total - 1 ? 'disabled class="opacity-50 pointer-events-none"' : `onclick="App.handleToolbeltNav('${sectionId}', 1)"`} class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-${sectionData.theme}-100 text-${sectionData.theme}-700 font-bold hover:bg-${sectionData.theme}-200 active:scale-95 transition-all text-lg">التالي ${ICONS.arrowLeft}</button>
+                    </div>
+                </div>`;
+                return html;
+            },
+
+            handleToolbeltClick(sectionId, id) {
+                this.state.sectionData[sectionId].selectedId = id;
+                const container = document.getElementById(`toolbelt-container-${sectionId}`);
+                if (container) {
+                    const sectionData = APP_DATA.sections.find(s => s.id === sectionId);
+                    container.innerHTML = this.getToolbeltExcerptHTML(sectionData, this.state.sectionData[sectionId]);
+                }
+            },
+
+            handleToolbeltNav(sectionId, dir) {
+                const state = this.state.sectionData[sectionId];
+                const sectionData = APP_DATA.sections.find(s => s.id === sectionId);
+                const newIdx = state.currentIdx + dir;
+                if (newIdx >= 0 && newIdx < sectionData.excerpts.length) {
+                    state.currentIdx = newIdx;
+                    state.selectedId = null;
+                    const container = document.getElementById(`toolbelt-container-${sectionId}`);
+                    if (container) {
+                        container.innerHTML = this.getToolbeltExcerptHTML(sectionData, state);
+                    }
+                }
             },
 
             renderContrastCards(sectionData) {
@@ -660,52 +944,6 @@
                 return html;
             },
 
-            renderToolbelt(sectionData) {
-                const sectionId = sectionData.id;
-                const state = this.state.sectionData[sectionId];
-                let activeIdx = state.activeIndex || 0;
-                const activeTool = sectionData.tools[activeIdx];
-                
-                let html = `<div class="max-w-4xl mx-auto fade-in" id="toolbelt-container-${sectionId}">`;
-                if (sectionData.description) { html += `<div class="text-center mb-8 fade-in"><p class="text-lg md:text-xl text-${sectionData.theme}-800 font-semibold bg-${sectionData.theme}-50 bg-opacity-60 p-4 md:p-5 rounded-2xl shadow-sm inline-block w-full">${sectionData.description}</p></div>`; }
-                
-                html += `<div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-8">`;
-                sectionData.tools.forEach((tool, idx) => {
-                    const isActive = idx === activeIdx;
-                    const btnClass = isActive 
-                        ? `bg-${sectionData.theme}-600 text-white shadow-md border-2 border-${sectionData.theme}-600 cursor-default` 
-                        : `bg-white text-slate-600 border-2 border-slate-200 md:hover:bg-slate-50 active:scale-95 cursor-pointer`;
-                    html += `<button onclick="App.handleToolbeltClick('${sectionId}', ${idx})" class="px-5 py-3 md:px-8 md:py-4 rounded-xl font-bold text-lg md:text-xl transition-all ${btnClass}">${tool.name}</button>`;
-                });
-                html += `</div>`;
-                
-                html += `
-                <div class="bg-white rounded-[2rem] border-2 border-${sectionData.theme}-200 p-6 md:p-10 shadow-sm smooth-expand text-center min-h-[16rem] flex flex-col justify-center items-center">
-                    <div class="text-2xl md:text-3xl font-bold text-${sectionData.theme}-700 mb-6 bg-${sectionData.theme}-50 p-4 md:p-6 rounded-2xl inline-block border border-${sectionData.theme}-100 w-full max-w-2xl leading-relaxed">
-                        ${activeTool.highlight}
-                    </div>
-                    <div class="text-xl md:text-2xl font-medium text-slate-700 leading-relaxed max-w-2xl">
-                        ${activeTool.desc}
-                    </div>
-                </div>
-                `;
-                html += `</div>`;
-                html += `<div class="w-full mt-6">` + this.renderSectionFooterControls(sectionData.id, true) + `</div>`;
-                return html;
-            },
-
-            handleToolbeltClick(sectionId, idx) {
-                this.state.sectionData[sectionId].activeIndex = idx;
-                const container = document.getElementById(`toolbelt-container-${sectionId}`);
-                if (container) {
-                    const sectionData = APP_DATA.sections.find(s => s.id === sectionId);
-                    // إعادة الرسم الجزئي للشريط فقط
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = this.renderToolbelt(sectionData);
-                    container.innerHTML = tempDiv.querySelector(`#toolbelt-container-${sectionId}`).innerHTML;
-                }
-            },
-            
             // --- دوال الأقسام الأساسية القديمة ---
 
             renderIntro(sectionData) {
@@ -1868,7 +2106,8 @@
                 else if (secDef.type === 'story') { this.state.sectionData[sectionId] = { currentIndex: 0 }; this.state.progress[sectionId].answered = 1; this.state.progress[sectionId].score = secDef.slides.length; }
                 else if (secDef.type === 'hotspot') { this.state.sectionData[sectionId] = secDef.questions.map(q => ({ originalQuestion: q, selectedTargets: [], answered: false, showHint: false, hintAnimate: false, answerAnimate: false, shakeWordId: null })); }
                 else if (secDef.type === 'matching') { this.state.sectionData[sectionId] = { rightItems: shuffleArray(secDef.pairs.map(p => ({ id: p.id, text: p.right }))), leftItems: shuffleArray(secDef.pairs.map(p => ({ id: p.id, text: p.left }))), selectedRight: null, selectedLeft: null, matchedPairs: [], wrongAttempt: false }; }
-                else if (secDef.type === 'style_lab' || secDef.type === 'radar' || secDef.type === 'contrast_cards' || secDef.type === 'toolbelt') { this.state.sectionData[sectionId] = { activeIndex: 0 }; }
+                else if (secDef.type === 'style_lab' || secDef.type === 'toolbelt') { this.state.sectionData[sectionId] = { currentIdx: 0, selectedId: null }; }
+                else if (secDef.type === 'radar' || secDef.type === 'contrast_cards') { this.state.sectionData[sectionId] = { activeBranch: null }; }
                 this.updateUI(); this.scrollToContent();
             },
             handleGlobalRestart() { this.initSectionData(); if (APP_DATA.sections.length > 0) this.state.activeTab = APP_DATA.sections[0].id; this.updateUI(); this.scrollTabIntoView(this.state.activeTab); requestAnimationFrame(() => { const header = document.getElementById('main-header'); window.scrollTo({ top: header ? header.offsetHeight : 80, behavior: 'smooth' }); }); },
