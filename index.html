@@ -194,7 +194,7 @@
                 {
                     id: "story",
                     type: "story",
-                    title: "البطاقات المنزلقة",
+                    title: "رحلة باريس",
                     theme: "indigo",
                     slides: [
                         { icon: "🚢", title: "الرحلة إلى باريز", text: "بدأت الرحلة بوظيفة واعظ في العساكر الجهادية، ثم تطورت ليصبح الطهطاوي مبعوثًا للتعلم في باريس." },
@@ -207,7 +207,7 @@
                 {
                     id: "radar",
                     type: "radar",
-                    title: "رادار الحجاج",
+                    title: "الخريطة الذهنية",
                     theme: "teal",
                     description: "مخطط تفاعلي يمثل الهيكل البنائي (الحجاجي) للنص. انقر على الأذرع لاكتشاف تفاصيل أطروحة الكاتب وحججه.",
                     mapData: {
@@ -226,7 +226,7 @@
                 {
                     id: "style_lab",
                     type: "style_lab",
-                    title: "مختبر الأسلوب",
+                    title: "مختبر النص",
                     theme: "violet",
                     description: "اقرأ القطع النصية مرتبة حسب ورودها في النص الأصلي، وانقر على الكلمات الملونة لاكتشاف أسرارها البلاغية واللغوية.",
                     excerpts: [
@@ -329,7 +329,7 @@
                 {
                     id: "test_flashcards",
                     type: "flashcards",
-                    title: "البطاقات القلابة",
+                    title: "الوجه الآخر",
                     theme: "amber",
                     description: "اختبر ذاكرتك في معاني مفردات النص. خمن المعنى ثم انقر للقلب.",
                     cards: [
@@ -354,23 +354,23 @@
                         {
                             text: "استخرج الكلمة التي تنتمي إلى (معجم العلم) في الجملة التالية:",
                             words: ["يسافرون", "لمعرفة", "الفنون", "والصنائع", "الحديثة"],
-                            targetIndex: 2,
-                            hint: "كلمة تدل على المهارات والإبداعات العلمية.",
-                            explanation: "(الفنون) من أهم كلمات معجم العلم، بجانب البحث، القراءة، والصنائع."
+                            targetIndices: [1, 2, 3], // يدعم اختيار أكثر من إجابة صحيحة
+                            hint: "كلمات تدل على المهارات والإبداعات العلمية.",
+                            explanation: "(لمعرفة، الفنون، الصنائع) جميعها كلمات تنتمي لمعجم العلم."
                         },
                         {
                             text: "أي من الكلمات التالية تنتمي لحقل (التغير وعدم الثبات)؟",
                             words: ["يحافظون", "على", "التقليد", "بل", "يبتدعون"],
-                            targetIndex: 4,
+                            targetIndex: 4, // يدعم الإجابة المفردة لتوافق القوالب القديمة
                             hint: "فعل مضارع يدل على اختراع شيء جديد.",
                             explanation: "(يبتدعون) تدل على ابتكار الجديد ورفض الجمود، وهي تعزز حجة الكاتب عن إبداعهم."
                         },
                         {
                             text: "حدد الكلمة التي تعبر عن (ذكاء العقل والبحث) عند أهل باريس:",
                             words: ["التولع", "بمعرفة", "أصل", "الشيء", "والاستدلال"],
-                            targetIndex: 4,
-                            hint: "كلمة تعني تقديم الدليل والبرهان.",
-                            explanation: "حبهم لـ (الاستدلال) ينفي عنهم صفة التقليد الأعمى ويؤكد عقلانيتهم."
+                            targetIndices: [1, 4],
+                            hint: "كلمة تعني تقديم الدليل والبرهان أو الإدراك.",
+                            explanation: "(بمعرفة، الاستدلال) تدلان على إعمال العقل ورفض التقليد الأعمى."
                         },
                         {
                             text: "انقر على الكلمة التي تعبر عن صفة (أخلاقية/عقلية) محمودة عندهم:",
@@ -389,9 +389,9 @@
                         {
                             text: "استخرج من الجملة الكلمة التي تنتمي لمعجم (القيم الثابتة):",
                             words: ["يبتدعون", "في", "الفنون", "وآراؤهم", "لا تتغير"],
-                            targetIndex: 4,
+                            targetIndices: [3, 4],
                             hint: "كلمة منفية تدل على الاستقرار.",
-                            explanation: "(لا تتغير) تدل على تمسكهم بمبادئهم السياسية وحبهم لوطنهم."
+                            explanation: "(آراؤهم، لا تتغير) تدلان على تمسكهم بمبادئهم السياسية وحبهم لوطنهم."
                         }
                     ]
                 },
@@ -566,42 +566,42 @@
                     questions: [
                         {
                             text: "ما هي (النتيجة أو الحجة الضمنية) التي أراد الكاتب إيصالها من خلال وصف توازن أهل باريس؟",
-                            options: ["دعوة غير صريحة لنكون مثلهم؛ نجمع بين الحفاظ على الثوابت والاستفادة من الجديد.", "دعوة صريحة للتخلي عن عاداتنا القديمة واستبدالها بالثقافة الغربية.", "التحذير من السفر إلى فرنسا لخطورة أخلاقهم.", "دعوة لتعلم اللغة الفرنسية فقط دون غيرها."],
+                            options: ["دعوة غير صريحة لنكون مثلهم؛ نجمع بين الحفاظ على الثوابت والاستفادة من الجديد.", "دعوة صريحة للتخلي عن عاداتنا القديمة واستبدالها بالثقافة الغربية.", "التحذير من السفر إلى فرنسا لخطورة أخلاقهم."],
                             correct: 0,
                             hint: "النتيجة التي لم يقلها مباشرة، بل تستنتجها من توازنه في الوصف.",
                             explanation: "هذه حجة ونتيجة ضمنية؛ فالكاتب يصف تمسكهم بثوابتهم مع ابتكارهم في فنونهم ليدعونا ضمنياً أن نفعل مثلهم."
                         },
                         {
                             text: "استخدام الكاتب لكلمة (تخليص) في عنوان كتابه يوحي بـ:",
-                            options: ["الصعوبة البالغة في الرحلة.", "الانتقاء والدقة في اختيار محاسن الغرب.", "كثرة المعلومات وتكدسها.", "الرغبة في تلخيص الكتب الفرنسية."],
+                            options: ["الصعوبة البالغة في الرحلة.", "الانتقاء والدقة في اختيار محاسن الغرب.", "كثرة المعلومات وتكدسها."],
                             correct: 1,
                             hint: "ماذا تفعل عندما تستخرج الذهب الصافي من الشوائب؟",
                             explanation: "كلمة (تخليص) تعني الاستخراج والانتقاء، مما يدل على منهجه الدقيق في أخذ النافع فقط."
                         },
                         {
                             text: "وصف الكاتب للفرنسيين بأنهم (أقرب للبخل) كان يهدف بشكل رئيسي إلى:",
-                            options: ["ذمهم والسخرية منهم.", "تبرير عدم إنفاقه للأموال هناك.", "إجراء مقارنة موضوعية لبيان تميز العرب بصفة الكرم.", "نصح العساكر بعدم التعامل المالي معهم."],
+                            options: ["ذمهم والسخرية منهم.", "تبرير عدم إنفاقه للأموال هناك.", "إجراء مقارنة موضوعية لبيان تميز العرب بصفة الكرم."],
                             correct: 2,
                             hint: "ذكر بعدها جملة (السبب في ذلك أن الكرم في العرب).",
                             explanation: "لم يقصد الذم المجرد، بل كان يقارن بموضوعية ليظهر للقارئ أن الغرب ليسوا مثاليين في كل شيء، وأن العرب يتفوقون في خصلة الكرم."
                         },
                         {
                             text: "ما العلاقة بين (حب الوطن) و (إلقاء النفس في المهالك) عند الباريزيين؟",
-                            options: ["علاقة تضاد وتناقض.", "علاقة تلازم (سبب ونتيجة).", "علاقة انفصال لا رابط بينهما.", "علاقة شك وريبة."],
+                            options: ["علاقة تضاد وتناقض.", "علاقة تلازم (سبب ونتيجة).", "علاقة انفصال لا رابط بينهما."],
                             correct: 1,
                             hint: "لأنهم يحبون وطنهم يفعلون هذا الشيء.",
                             explanation: "حبهم الشديد لوطنهم هو السبب (الدافع) الذي يجعلهم يلقون بأنفسهم في المهالك من أجله (النتيجة)."
                         },
                         {
                             text: "لماذا غابت الصور الفنية الانفعالية (الخيالية) بشكل كبير في الفقرة الأولى من النص؟",
-                            options: ["بسبب ضعف الكاتب في البلاغة.", "بسبب ضيق الوقت أثناء تدوين الرحلة.", "لأن التركيز كان على المضمون العلمي والوصف الموضوعي.", "لأن الفرنسيين لا يحبون الخيال."],
+                            options: ["بسبب ضعف الكاتب في البلاغة.", "بسبب ضيق الوقت أثناء تدوين الرحلة.", "لأن التركيز كان على المضمون العلمي والوصف الموضوعي."],
                             correct: 2,
                             hint: "الكاتب يسجل أحداثاً وحقائق تاريخية وعلمية.",
                             explanation: "النص ينتمي لأدب الرحلة الذي يهدف للإقناع ونقل الواقع، لذلك غلبت عليه الجمل الخبرية التقريرية لضمان الموضوعية والدقة."
                         },
                         {
                             text: "أكمل العبارة لتوافق المعنى: الباريزيون ليس عندهم المواساة إلا بـ ........... لا بـ .........",
-                            options: ["الأفعال والمال / الأقوال", "الأقوال والأفعال / الأموال", "الأموال والأقوال / الأفعال", "القلوب / الأموال"],
+                            options: ["الأفعال والمال / الأقوال", "الأقوال والأفعال / الأموال", "الأموال والأقوال / الأفعال"],
                             correct: 1,
                             hint: "هم بخلاء.",
                             explanation: "يواسون بأقوالهم وأفعالهم، لكنهم يمتنعون عن المواساة بالأموال."
@@ -856,7 +856,7 @@
                 `;
                 
                 // الأذرع كأزرار
-                html += `<div class="flex flex-wrap justify-center gap-4 w-full relative z-10 mb-8">`;
+                html += `<div class="flex flex-wrap justify-center gap-4 w-full relative z-10 mb-8" id="radar-buttons-${sectionData.id}">`;
                 map.branches.forEach((branch, idx) => {
                     const isActive = state.activeBranch === idx;
                     const btnClass = isActive 
@@ -864,7 +864,7 @@
                         : `bg-white text-slate-700 border-2 border-${branch.color}-200 md:hover:bg-${branch.color}-50`;
                     
                     html += `
-                    <button onclick="App.handleRadarClick('${sectionData.id}', ${idx})" class="flex-1 min-w-[140px] max-w-[180px] p-4 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 active:scale-95 ${btnClass}">
+                    <button id="radar-btn-${sectionData.id}-${idx}" onclick="App.handleRadarClick('${sectionData.id}', ${idx})" class="flex-1 min-w-[140px] max-w-[180px] p-4 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 active:scale-95 ${btnClass}">
                         <span class="text-3xl md:text-4xl">${branch.icon}</span>
                         <span class="font-bold text-sm md:text-base text-center leading-snug">${branch.title}</span>
                     </button>
@@ -873,24 +873,8 @@
                 html += `</div>`;
 
                 // منطقة عرض التفاصيل
-                html += `<div class="w-full min-h-[14rem] flex items-center justify-center transition-all duration-500 mb-6">`;
-                if (state.activeBranch !== null) {
-                    const activeBranch = map.branches[state.activeBranch];
-                    html += `
-                    <div class="bg-${activeBranch.color}-50 border-2 border-${activeBranch.color}-200 rounded-3xl p-6 md:p-8 shadow-inner w-full max-w-2xl text-center smooth-expand flex flex-col items-center justify-center">
-                        <div class="text-4xl md:text-5xl mb-4 bg-white p-4 rounded-full shadow-sm border border-${activeBranch.color}-100 shrink-0">${activeBranch.icon}</div>
-                        <h4 class="text-2xl font-bold text-${activeBranch.color}-800 mb-4">${activeBranch.title}</h4>
-                        <p class="text-xl md:text-2xl text-slate-700 font-medium leading-relaxed">${activeBranch.text}</p>
-                    </div>
-                    `;
-                } else {
-                    html += `
-                    <div class="border-2 border-dashed border-slate-300 rounded-3xl p-8 w-full max-w-2xl text-center text-slate-400 flex flex-col items-center justify-center fade-in bg-slate-50/50 min-h-[14rem]">
-                        <span class="text-4xl md:text-5xl mb-3 opacity-60">👆</span>
-                        <span class="text-lg md:text-xl font-medium">انقر على أحد الأذرع بالأعلى لعرض تفاصيله</span>
-                    </div>
-                    `;
-                }
+                html += `<div id="radar-details-${sectionData.id}" class="w-full min-h-[14rem] flex items-center justify-center transition-all duration-500 mb-6">`;
+                html += this.getRadarDetailsHTML(sectionData, state.activeBranch);
                 html += `</div>`;
 
                 html += `</div>`;
@@ -898,14 +882,49 @@
                 return html;
             },
 
+            getRadarDetailsHTML(sectionData, activeBranchIdx) {
+                if (activeBranchIdx !== null) {
+                    const activeBranch = sectionData.mapData.branches[activeBranchIdx];
+                    return `
+                    <div class="bg-${activeBranch.color}-50 border-2 border-${activeBranch.color}-200 rounded-3xl p-6 md:p-8 shadow-inner w-full max-w-2xl text-center fade-in flex flex-col items-center justify-center min-h-[14rem]">
+                        <div class="text-4xl md:text-5xl mb-4 bg-white p-4 rounded-full shadow-sm border border-${activeBranch.color}-100 shrink-0">${activeBranch.icon}</div>
+                        <h4 class="text-2xl font-bold text-${activeBranch.color}-800 mb-4">${activeBranch.title}</h4>
+                        <p class="text-xl md:text-2xl text-slate-700 font-medium leading-relaxed">${activeBranch.text}</p>
+                    </div>
+                    `;
+                } else {
+                    return `
+                    <div class="border-2 border-dashed border-slate-300 rounded-3xl p-8 w-full max-w-2xl text-center text-slate-400 flex flex-col items-center justify-center fade-in bg-slate-50/50 min-h-[14rem]">
+                        <span class="text-4xl md:text-5xl mb-3 opacity-60">👆</span>
+                        <span class="text-lg md:text-xl font-medium">انقر على أحد الأذرع بالأعلى لعرض تفاصيله</span>
+                    </div>
+                    `;
+                }
+            },
+
             handleRadarClick(sectionId, idx) {
-                this.state.sectionData[sectionId].activeBranch = idx;
-                const container = document.getElementById(`radar-container-${sectionId}`);
-                if (container) {
-                    const sectionData = APP_DATA.sections.find(s => s.id === sectionId);
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = this.renderRadar(sectionData);
-                    container.innerHTML = tempDiv.querySelector(`#radar-container-${sectionId}`).innerHTML;
+                const state = this.state.sectionData[sectionId];
+                if (state.activeBranch === idx) return; // لمنع إعادة الرسم لو نقر على نفس الزر
+                
+                state.activeBranch = idx;
+                const sectionData = APP_DATA.sections.find(s => s.id === sectionId);
+
+                // تحديث كلاسات الأزرار بدون إعادة رسم القسم بالكامل
+                sectionData.mapData.branches.forEach((branch, i) => {
+                    const btn = document.getElementById(`radar-btn-${sectionId}-${i}`);
+                    if (btn) {
+                        if (i === idx) {
+                            btn.className = `flex-1 min-w-[140px] max-w-[180px] p-4 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 active:scale-95 bg-${branch.color}-500 text-white shadow-md transform scale-105 ring-4 ring-${branch.color}-200`;
+                        } else {
+                            btn.className = `flex-1 min-w-[140px] max-w-[180px] p-4 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 active:scale-95 bg-white text-slate-700 border-2 border-${branch.color}-200 md:hover:bg-${branch.color}-50`;
+                        }
+                    }
+                });
+
+                // تحديث صندوق التفاصيل فقط بنعومة
+                const detailsContainer = document.getElementById(`radar-details-${sectionId}`);
+                if (detailsContainer) {
+                    detailsContainer.innerHTML = this.getRadarDetailsHTML(sectionData, idx);
                 }
             },
 
@@ -960,12 +979,12 @@
                     <div class="min-h-[8rem] w-full transition-all duration-300">
                         ${selectedSeg ? `
                         <div class="bg-${sectionData.theme}-50 border border-${sectionData.theme}-200 rounded-2xl p-6 text-right smooth-expand">
-                            <h4 class="text-${sectionData.theme}-800 font-bold text-xl md:text-2xl mb-3 flex items-center gap-2"><span class="text-2xl">💡</span> التفسير البلاغي:</h4>
+                            <h4 class="text-${sectionData.theme}-800 font-bold text-xl md:text-2xl mb-3 flex items-center gap-2"><span class="text-2xl">💡</span> التفسير:</h4>
                             <p class="text-lg md:text-xl text-slate-700 font-medium leading-relaxed">${selectedSeg.explanation}</p>
                         </div>
                         ` : `
                         <div class="flex items-center justify-center h-full text-slate-400 font-medium text-lg md:text-xl border-2 border-dashed border-slate-200 rounded-2xl p-6 min-h-[8rem]">
-                            انقر على الكلمات الملونة في النص لاكتشاف وظيفتها البلاغية.
+                            انقر على الكلمات الملونة في النص لاكتشاف وظيفتها البلاغية واللغوية.
                         </div>
                         `}
                     </div>
@@ -997,6 +1016,9 @@
                     const container = document.getElementById(`style-lab-container-${sectionId}`);
                     if (container) {
                         container.innerHTML = this.getStyleLabExcerptHTML(sectionData, state);
+                        const offset = document.getElementById('sticky-tabs-container')?.offsetHeight || 80;
+                        const y = container.getBoundingClientRect().top + window.pageYOffset - offset - 20;
+                        window.scrollTo({top: y, behavior: 'smooth'});
                     }
                 }
             },
@@ -1094,6 +1116,9 @@
                     const container = document.getElementById(`toolbelt-container-${sectionId}`);
                     if (container) {
                         container.innerHTML = this.getToolbeltExcerptHTML(sectionData, state);
+                        const offset = document.getElementById('sticky-tabs-container')?.offsetHeight || 80;
+                        const y = container.getBoundingClientRect().top + window.pageYOffset - offset - 20;
+                        window.scrollTo({top: y, behavior: 'smooth'});
                     }
                 }
             },
@@ -1268,7 +1293,7 @@
 
                 let wordsHTML = '';
                 q.words.forEach((word, wIdx) => {
-                    const isTarget = q.targetIndex === wIdx;
+                    const isTarget = q.targetIndices ? q.targetIndices.includes(wIdx) : q.targetIndex === wIdx;
                     const isSelectedCorrect = answered && isTarget;
                     const isShaking = shakeWordIndex === wIdx;
 
@@ -1591,7 +1616,7 @@
                 html += `<div class="relative w-full min-h-[20rem] flex flex-col items-center justify-center p-4 md:p-6 transition-all duration-500 perspective">`;
                 if (!isComplete) {
                     const card = cards[currentIndex]; const flippedClass = isFlipped ? 'rotate-y-180' : '';
-                    html += `<div class="w-full max-w-lg h-80 relative perspective ${animatingOut ? 'fly-out' : 'fade-in'}"><div id="flashcard-inner-${sectionId}" class="w-full h-full absolute preserve-3d flip-transition cursor-pointer active:scale-[0.98] ${flippedClass}" onclick="App.handleFlashcardFlip('${sectionId}')"><div class="absolute w-full h-full backface-hidden bg-white border-2 border-slate-200 rounded-3xl shadow-lg flex flex-col items-center justify-center p-8 text-center md:hover:border-${theme}-300 md:hover:shadow-xl transition-all"><span class="absolute top-6 right-6 text-${theme}-600 font-bold text-lg md:text-xl">البطاقة ${toArabicNum(currentIndex + 1)}</span><div class="text-slate-400 mb-4">${ICONS.flipIcon}</div><h3 class="text-4xl md:text-5xl font-bold text-slate-800 leading-snug">${card.front}</h3></div><div class="absolute w-full h-full backface-hidden bg-slate-50 border-2 border-${theme}-400 rounded-3xl shadow-lg flex flex-col items-center justify-center p-8 text-center rotate-y-180"><h3 class="text-3xl font-bold text-${theme}-700 mb-4">${card.back}</h3><p class="text-xl font-medium text-slate-700 leading-relaxed mb-6">${card.explanation}</p><div class="w-full grid grid-cols-2 gap-3 mt-auto relative z-20" onclick="event.stopPropagation()"><button onclick="App.handleFlashcardAnswer('${sectionId}', true)" class="bg-emerald-500 md:hover:bg-emerald-600 text-white font-bold py-3 rounded-xl transition-transform active:scale-95 shadow-md flex items-center justify-center gap-2 text-lg">${ICONS.checkCircle} عرفتها</button><button onclick="App.handleFlashcardAnswer('${sectionId}', false)" class="bg-rose-500 md:hover:bg-rose-600 text-white font-bold py-3 rounded-xl transition-transform active:scale-95 shadow-md flex items-center justify-center gap-2 text-lg">${ICONS.xCircle} أخطأت</button></div></div></div></div>`;
+                    html += `<div class="w-full max-w-lg h-80 relative perspective ${animatingOut ? 'fly-out' : 'fade-in'}"><div id="flashcard-inner-${sectionId}" class="w-full h-full absolute preserve-3d flip-transition cursor-pointer active:scale-[0.98] ${flippedClass}" onclick="App.handleFlashcardFlip('${sectionId}')"><div class="absolute w-full h-full backface-hidden bg-white border-2 border-slate-200 rounded-3xl shadow-lg flex flex-col items-center justify-center p-8 text-center md:hover:border-${theme}-300 md:hover:shadow-xl transition-all"><span class="absolute top-6 right-6 text-${theme}-600 font-bold text-lg md:text-xl">البطاقة ${toArabicNum(currentIndex + 1)}</span><div class="text-slate-400 mb-4">${ICONS.flipIcon}</div><h3 class="text-4xl md:text-5xl font-medium text-slate-800 leading-snug">${card.front}</h3></div><div class="absolute w-full h-full backface-hidden bg-slate-50 border-2 border-${theme}-400 rounded-3xl shadow-lg flex flex-col items-center justify-center p-8 text-center rotate-y-180"><h3 class="text-2xl md:text-3xl font-medium text-${theme}-700 mb-4">${card.back}</h3><p class="text-xl font-medium text-slate-700 leading-relaxed mb-6">${card.explanation}</p><div class="w-full grid grid-cols-2 gap-3 mt-auto relative z-20" onclick="event.stopPropagation()"><button onclick="App.handleFlashcardAnswer('${sectionId}', true)" class="bg-emerald-500 md:hover:bg-emerald-600 text-white font-bold py-3 rounded-xl transition-transform active:scale-95 shadow-md flex items-center justify-center gap-2 text-lg">${ICONS.checkCircle} عرفتها</button><button onclick="App.handleFlashcardAnswer('${sectionId}', false)" class="bg-rose-500 md:hover:bg-rose-600 text-white font-bold py-3 rounded-xl transition-transform active:scale-95 shadow-md flex items-center justify-center gap-2 text-lg">${ICONS.xCircle} أخطأت</button></div></div></div></div>`;
                 } else { html += `<div class="text-3xl md:text-4xl font-bold text-emerald-500 flex flex-col items-center gap-4 fade-in py-10 bg-white border-2 border-emerald-200 w-full max-w-lg rounded-3xl shadow-lg"><span class="text-6xl">🏆</span><span>انتهت البطاقات!</span></div>`; }
                 html += `</div></div>`;
                 if (isComplete) { const progress = this.state.progress[sectionId]; html += `<div class="mt-8 p-8 md:p-10 bg-white border-2 border-${theme}-200 rounded-2xl shadow-sm text-center smooth-expand max-w-2xl mx-auto w-full"><h3 class="text-2xl md:text-3xl font-semibold text-slate-700 mb-6">نتيجتك في قسم (${sectionData.title})</h3><div class="text-4xl md:text-5xl font-bold text-${theme}-600 flex items-center justify-center gap-3"><span>${toArabicNum(progress.score)}</span><span class="text-2xl md:text-3xl text-slate-400 font-medium mt-1">من</span><span>${toArabicNum(progress.total)}</span></div></div>`; }
@@ -1816,6 +1841,13 @@
                     }
                     this.updateUI();
                     this.updateTabs();
+                    
+                    const container = document.getElementById(`section-${sectionId}`);
+                    if (container) {
+                        const offset = document.getElementById('sticky-tabs-container')?.offsetHeight || 80;
+                        const y = container.getBoundingClientRect().top + window.pageYOffset - offset - 20;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }
                 }
             },
 
@@ -1912,7 +1944,7 @@
                 const qState = this.state.sectionData[sectionId][qIndex];
                 const q = qState.originalQuestion;
                 const { answered, selectedWordIndex, answerAnimate, shakeWordIndex } = qState;
-                const isTarget = wIdx => q.targetIndex === wIdx;
+                const isTarget = wIdx => q.targetIndices ? q.targetIndices.includes(wIdx) : q.targetIndex === wIdx;
 
                 // تحديث الكلمات
                 let wordsHTML = '';
@@ -2139,7 +2171,10 @@
             handleSpottingWordClick(sectionId, qIndex, wIndex) {
                 const qState = this.state.sectionData[sectionId][qIndex];
                 if (qState.answered) return;
-                const isCorrect = wIndex === qState.originalQuestion.targetIndex;
+                const isCorrect = qState.originalQuestion.targetIndices 
+                    ? qState.originalQuestion.targetIndices.includes(wIndex) 
+                    : wIndex === qState.originalQuestion.targetIndex;
+                
                 if (isCorrect) {
                     qState.answered = true;
                     qState.selectedWordIndex = wIndex;
