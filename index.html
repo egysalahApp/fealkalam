@@ -197,9 +197,12 @@
                     title: "رحلة باريس",
                     theme: "indigo",
                     slides: [
-                        { icon: "🚢", title: "الرحلة إلى باريز", text: "بدأت الرحلة بوظيفة واعظ في العساكر الجهادية، ثم تطورت ليصبح الطهطاوي مبعوثًا للتعلم في باريس." },
-                        { icon: "📖", title: "الأطروحة الأساسية", text: "آمن الطهطاوي بأن (خير الأمور العلم)، وأراد نقل العلوم الدنيوية للشرق، مقيدًا ذلك بضوابط الشريعة." },
-                        { icon: "🔍", title: "منهجية الوصف والمقارنة", text: "اعتمد الكاتب على وصف الفرنسيين بموضوعية تامة؛ فمدح ذكاءهم وإتقانهم، لكنه انتقد إسرافهم وبخلهم، ووازن ذلك مع طباع العرب." }
+                        { icon: "⚖️", title: "أطراف القضية", text: "تتكون القضية في النص من ثلاثة أطراف رئيسية: (الكاتب) وهو الحكم، و(العلم) وهو الغاية المطلوبة، و(الرحلة) وهي الوسيلة لتحقيق هذه الغاية." },
+                        { icon: "📝", title: "أسلوب الكاتب", text: "تميز أسلوبه باللغة السهلة الواضحة، وغياب الصور الخيالية المفرطة للتركيز على المضمون الموضوعي، مع تزيين النص بالمحسنات اللفظية كالسجع والطباق." },
+                        { icon: "🔍", title: "منهجية الحجاج", text: "اعتمد الكاتب لتعزيز أطروحته على (الوصف الموضوعي) و(المقارنة) بين الغرب والعرب، مع الإكثار من أدوات التوكيد مثل (إنّ) و(قد) لإقناع القارئ." },
+                        { icon: "🗣️", title: "لغة الضمائر", text: "نوّع الطهطاوي في ضمائره؛ فاستخدم (ضمير المتكلم) لإعلان رأيه الشخصي بثقة، و(ضمائر الغائب) للوصف الموضوعي لفوائد العلم وطباع الباريزيين." },
+                        { icon: "🗂️", title: "توظيف المعاجم", text: "لخدمة حججه، استخدم الكاتب حقولاً معجمية دقيقة، أبرزها (معجم العلم) لتبرير الرحلة، مع إبراز التقابل بين (معجم التغير والابتكار) و(معجم القيم الثابتة)." },
+                        { icon: "🎯", title: "النتيجة الضمنية", text: "لم يطلب منا الكاتب صراحة التخلي عن هويتنا، بل قدم نتيجة ضمنية تدعونا لنكون مثلهم: نحافظ على ثوابتنا وأخلاقنا، ونستفيد من ابتكاراتهم وعلومهم." }
                     ]
                 },
 
@@ -368,16 +371,16 @@
                         {
                             text: "حدد الكلمة التي تعبر عن (ذكاء العقل والبحث) عند أهل باريس:",
                             words: ["التولع", "بمعرفة", "أصل", "الشيء", "والاستدلال"],
-                            targetIndices: [1, 4],
-                            hint: "كلمة تعني تقديم الدليل والبرهان أو الإدراك.",
-                            explanation: "(بمعرفة، الاستدلال) تدلان على إعمال العقل ورفض التقليد الأعمى."
+                            targetIndices: [0, 1, 4],
+                            hint: "كلمة تعني الشغف، أو تقديم الدليل، أو الإدراك.",
+                            explanation: "(التولع، بمعرفة، الاستدلال) تدل على شغفهم وإعمال العقل ورفض التقليد الأعمى."
                         },
                         {
                             text: "انقر على الكلمة التي تعبر عن صفة (أخلاقية/عقلية) محمودة عندهم:",
                             words: ["الإسراف", "في", "الشهوات", "وتوفيتهم", "بالحقوق"],
-                            targetIndex: 4,
-                            hint: "كلمة تعني أداء ما عليهم للآخرين.",
-                            explanation: "توفية الحقوق الواجبة من أبرز الصفات الأخلاقية التي استحسنها الكاتب."
+                            targetIndices: [3, 4],
+                            hint: "كلمات تعني أداء ما عليهم للآخرين.",
+                            explanation: "(توفيتهم، بالحقوق) من أبرز الصفات الأخلاقية التي استحسنها الكاتب."
                         },
                         {
                             text: "حدد الكلمة التي تدل على مظهرهم الخارجي (معجم اللون):",
@@ -479,7 +482,7 @@
                     id: "test_error",
                     type: "error_correction",
                     title: "اكتشاف الأخطاء",
-                    theme: "rose",
+                    theme: "cyan",
                     description: "ابحث عن الكلمة أو العبارة الخاطئة في الجملة، ثم اختر التصويب الذي يكمل السياق بشكل صحيح.",
                     questions: [
                         {
@@ -615,7 +618,7 @@
                     type: "golden_envelope",
                     title: "أثرٌ يبقى",
                     theme: "amber",
-                    description: "لقد وصلنا إلى نهاية الرحلة مع الطهطاوي. إليك الخلاصة والرسالة الخالدة.",
+                    description: "لقد وصلنا إلى ختام هذه الرحلة مع الطهطاوي. نتركك مع هذه الخلاصة التأملية.",
                     quote: "<span class=\"text-2xl md:text-3xl font-medium leading-[2.2] block\">«ومن المعلوم أني لا أستحسن إلا ما لم يُخالف نص الشريعة المحمدية.»</span>",
                     summary: "<span class=\"text-xl md:text-2xl font-medium leading-[2.2] block\">تؤكد هذه العبارة على المنهج الواعي للطهطاوي في التعامل مع حضارة الغرب. فهو لم ينبهر لدرجة التبعية العمياء، ولم يرفض بانغلاق، بل وضع ميزانًا دقيقًا يحمي الهوية؛ ليأخذ النافع المتقدم ويترك ما يتعارض مع ثوابت عقيدته وأمته.</span>",
                     question: "<span class=\"text-xl md:text-2xl font-medium leading-[2.2] block\">كيف يمكننا في عصرنا الحالي وتطوره التكنولوجي الهائل، الانفتاح على الثقافات الأخرى مع الحفاظ على هويتنا وثوابتنا الأصيلة كـ«إبريز» خالص؟</span>"
@@ -1807,7 +1810,7 @@
                         <p class="text-lg md:text-xl text-slate-600 font-medium bg-white border border-slate-200 p-4 md:p-5 rounded-2xl shadow-sm inline-block w-full leading-relaxed">${sectionData.description}</p>
                     </div>
 
-                    <div class="bg-white border border-slate-200 rounded-[2rem] p-8 md:p-12 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] relative">
+                    <div class="bg-white border border-slate-200 rounded-[2rem] p-8 md:p-12 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] relative text-center">
                         
                         <div class="text-center mb-10">
                             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-50 text-amber-500 mb-4 shadow-sm border border-amber-100 text-3xl">✨</div>
@@ -1818,7 +1821,7 @@
                         <div class="mb-10 relative">
                             <div class="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-100 relative">
                                 <span class="absolute -top-6 right-4 text-5xl text-slate-300 font-bold leading-none select-none pointer-events-none">"</span>
-                                <h4 class="text-slate-500 font-bold text-sm md:text-base mb-4 uppercase tracking-wider flex items-center gap-2">
+                                <h4 class="text-slate-500 font-bold text-sm md:text-base mb-4 uppercase tracking-wider flex items-center justify-center gap-2">
                                     <span class="bg-slate-200 text-slate-600 px-2 py-1 rounded text-xs">📌</span> اقتباس الدرس
                                 </h4>
                                 <p class="text-xl md:text-2xl font-medium text-slate-800 leading-[2.2]">${sectionData.quote}</p>
@@ -1827,14 +1830,14 @@
                         </div>
 
                         <div class="mb-10 px-2">
-                            <h4 class="text-slate-500 font-bold text-sm md:text-base mb-3 uppercase tracking-wider flex items-center gap-2">
+                            <h4 class="text-slate-500 font-bold text-sm md:text-base mb-3 uppercase tracking-wider flex items-center justify-center gap-2">
                                 <span class="bg-slate-200 text-slate-600 px-2 py-1 rounded text-xs">💡</span> الخلاصة
                             </h4>
                             <p class="text-lg md:text-xl font-medium text-slate-700 leading-relaxed">${sectionData.summary}</p>
                         </div>
 
                         <div class="bg-gradient-to-br from-amber-50 to-white rounded-2xl p-6 md:p-8 border border-amber-100 shadow-sm transform transition-transform md:hover:-translate-y-1">
-                            <h4 class="text-amber-600 font-bold text-sm md:text-base mb-3 uppercase tracking-wider flex items-center gap-2">
+                            <h4 class="text-amber-600 font-bold text-sm md:text-base mb-3 uppercase tracking-wider flex items-center justify-center gap-2">
                                 <span class="bg-amber-100 text-amber-600 px-2 py-1 rounded text-xs">🤔</span> سؤال للتأمل
                             </h4>
                             <p class="text-lg md:text-xl font-medium text-slate-800 leading-relaxed">${sectionData.question}</p>
